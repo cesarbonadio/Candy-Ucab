@@ -56,8 +56,9 @@ public function __construct(){
       }
 
       public function edit($codigo){
+        $producto = Producto::findOrFail($codigo);
         $tipos = DB::table('tipo')->get();
-        return view('administrar.producto.edit',["producto"=>Producto::findOrFail($codigo),"tipos"=>$tipos]);
+        return view('administrar.producto.edit',["producto"=>$producto,"tipos"=>$tipos]);
       }
 
 

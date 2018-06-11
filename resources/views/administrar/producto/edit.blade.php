@@ -53,7 +53,7 @@
        <div class = "form-group">
          <label>Tipo</label>
           <select name="fk_tipo" class="form-control">
-            <option value="">...</option>
+            <option value="{{$producto->fk_tipo}}">...</option>
             @foreach ($tipos as $tipo)
              <option value = "{{$tipo->codigo}}">{{$tipo->descripcion}}</option>
             @endforeach

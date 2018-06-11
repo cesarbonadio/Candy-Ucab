@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('administrar/producto','ProductoController');
+Route::resource('administrar/tienda','TiendaController');

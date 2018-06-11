@@ -34,9 +34,9 @@ class ProductoFormRequest extends FormRequest
             'nombre'=>'required|max:40',
             'descripcion'=>'max:400',
             'precio'=>'required|numeric',
-            'ranking'=>'nullable|numeric',
+            'ranking'=>'nullable|integer',
             'foto'=>'max:70',
-            'fk_tipo'=>'nullable|numeric'
+            'fk_tipo'=>'nullable|integer'
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace candyucab\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductoFormRequest extends FormRequest
+class TiendaFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,13 +30,24 @@ class ProductoFormRequest extends FormRequest
       al nombre de los formularios a nivel de vista para
       ingresar los datos en la base de datos
       */
-        return [
-            'nombre'=>'required|max:40',
-            'descripcion'=>'max:400',
-            'precio'=>'required|numeric',
-            'ranking'=>'nullable|integer',
-            'foto'=>'max:70',
-            'fk_tipo'=>'nullable|integer'
+      //$this->prepInput();
+
+      $rules = [
+            'codigo'=>'required|integer|unique:tienda,codigo',
+            'tipo'=>'required|max:20',
+            'nombre'=>'required|max:50',
+            'fk_lugar'=>'required|integer'
         ];
+
+
+       if ($this->tienda){
+         $rules['codigo'] ='nullable';
+       }
+
+       return $rules;
+
     }
+
+
+
 }

@@ -35,7 +35,6 @@
          <div class = "form-group">
            <label>Tipo</label>
             <select name="tipo" class="form-control">
-
               <!--comparar para saber que mostrar dentro de option-->
               @if(strcmp($tienda->tipo,'mini')==0)
               <option value="{{$tienda->tipo}}">Mini-CandyShop</option>
@@ -44,7 +43,6 @@
               <option value="{{$tienda->tipo}}">CandyShop</option>
               <option value = "mini">Mini-CandyShop</option>
               @endif
-
             </select>
           </div>
       </div>
@@ -54,21 +52,21 @@
          <div class = "form-group">
            <label>Ubicación de la tienda</label>
             <select name="fk_lugar" class="form-control">
-              <option value="{{$lugar->codigo}}">{{$lugar->nombre}} ({{$lugar->tipo}})</option>
-              @foreach ($lugares as $l)
-               <option value = "{{$l->codigo}}">{{$l->nombre}} ({{$l->tipo}})</option>
+              @foreach ($lugares as $lugar)
+              @if($tienda->fk_lugar==$lugar->codigo)
+              <option value="{{$lugar->codigo}}" selected>{{$lugar->nombre}} ({{$lugar->tipo}})</option>
+              @else
+              <option value = "{{$lugar->codigo}}">{{$lugar->nombre}} ({{$lugar->tipo}})</option>
+              @endif
               @endforeach
             </select>
           </div>
       </div>
 
 
-
-
-
       <div class = "col-lg-6 col-sm-6 col-md-6 col-xs-12">
       <div class = "form-group">
-        <br>
+      <br>
        <button class="btn btn-primary" type="submit">Guardar</button>
        <button class="btn btn-danger" type="reset"><a href="../../tienda" style="color: inherit;">Cancelar</a></button>
       </div>

@@ -71,8 +71,10 @@ class TiendaController extends Controller
 
       public function destroy($codigo){
         $tienda = Tienda::findOrFail($codigo);
-        /*borrar primero todos los apartamentos asociados a esa tienda*/
+        /*borrar primero todos los apartamentos y clientes asociados a esa tienda*/
         DB::delete('delete from departamento where fk_tienda = ? ',[$tienda->codigo]);
+        DB::delete('delete from naturale where fk_tienda = ? ',[$tienda->codigo]);
+        DB::delete('delete from juridico where fk_tienda = ? ',[$tienda->codigo]);
         $tienda->delete();
         return Redirect::to('administrar/tienda');
       }

@@ -128,8 +128,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Natural</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Jurídico</a></li>
+                <li><a href="../../../cliente/natural"><i class="fa fa-circle-o"></i>Natural</a></li>
+                <li><a href="../../../cliente/juridico"><i class="fa fa-circle-o"></i>Jurídico</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Encargos</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Ventas</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Carnets</a></li>
@@ -186,7 +186,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Titulo de cualquiera de la paginas</h3>
+                <!--  <h3 class="box-title">Titulo de cualquiera de la paginas</h3>-->
                   <div class="box-tools pull-right">
                     <!--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
@@ -212,12 +212,12 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
-      <footer class="main-footer">
+    <!--  <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 0.1
         </div>
         <strong>Copyright &copy; 2018 <a href="#">CandyUcab</a></strong> All rights reserved.
-      </footer>
+      </footer> -->
 
 
       <!-- jQuery 2.1.4 -->

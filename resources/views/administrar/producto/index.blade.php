@@ -3,7 +3,7 @@
 
 <div class="row">
  <div class = "col-lg-8 col-md-8 col-sm-8 col-xs-12">
-   <h3> Listado de Productos <a href="producto/create"><button class="btn btn-primary"> Crear un producto </button></a></h3>
+   <h3> Listado de Productos <a href="producto/create"><button class="btn btn-succes"> Crear un producto </button></a></h3>
    @include('administrar.producto.search')
  </div>
 </div>
@@ -44,8 +44,8 @@
           <td align="center">{{$pro->fk_tipo}}</td>
 
                <td>
-                 <a href="{{URL::action('ProductoController@edit',$pro->codigo)}}"><button class = "btn btn-warning">Editar</button>
-                 <a href="{{URL::action('ProductoController@show',$pro->codigo)}}"><button class = "btn btn-success">Ver</button>
+                 <a href="{{URL::action('ProductoController@edit',$pro->codigo)}}"><button class = "btn btn-info">Editar</button>
+                 <a href="{{URL::action('ProductoController@show',$pro->codigo)}}"><button class = "btn btn-primary">Ver</button>
                  <a href="" data-target="#modal-delete-{{$pro->codigo}}" data-toggle="modal"><button class = "btn btn-danger">Eliminar</button>
                </td>
       </tr>

@@ -15,7 +15,7 @@
 
 			<div class="modal-body">
 				<p>¿Seguro que quiere eliminar la tienda: <strong> {{$tien->nombre}} </strong> de código <strong> {{$tien->codigo}}</strong> ?</p>
-				<p>También se eliminan todos los departamentos asociados.</p>
+				<p>También se eliminan todos los departamentos y clientes asociados.</p>
 			</div>
 
 			<div class="modal-footer">

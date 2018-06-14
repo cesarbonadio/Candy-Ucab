@@ -53,9 +53,13 @@
        <div class = "form-group">
          <label>Tipo</label>
           <select name="fk_tipo" class="form-control">
-            <option value="{{$producto->fk_tipo}}">...</option>
+            <option value="">...</option>
             @foreach ($tipos as $tipo)
+            @if ($producto->fk_tipo==$tipo->codigo)
+             <option value="{{$tipo->codigo}}" selected>{{$tipo->descripcion}}</option>
+            @else
              <option value = "{{$tipo->codigo}}">{{$tipo->descripcion}}</option>
+            @endif
             @endforeach
           </select>
         </div>

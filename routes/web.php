@@ -17,5 +17,6 @@ Route::get('/', function () {
 
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
+Route::resource('administrar/punto','PuntoController');
 Route::resource('cliente/natural','NaturalController');
 Route::resource('cliente/juridico','JuridicoController');

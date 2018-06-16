@@ -105,6 +105,7 @@
               <ul class="treeview-menu">
                 <li><a href="../../../administrar/producto"><i class="fa fa-circle-o"></i> Productos</a></li>
                 <li><a href="../../../administrar/tienda"><i class="fa fa-circle-o"></i> Tiendas</a></li>
+                <li><a href="../../../administrar/punto"><i class="fa fa-circle-o"></i> Punto</a></li>
               </ul>
             </li>
 

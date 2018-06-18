@@ -15,6 +15,7 @@
 
 			<div class="modal-body">
 				<p>¿Seguro que quiere eliminar el histórico: <strong> {{$p->codigo}} </strong> con valor <strong> {{$p->valor}}</strong> ?</p>
+        <p>Se van a eliminar todos los historiales de clientes.</p>
 			</div>
 
 			<div class="modal-footer">

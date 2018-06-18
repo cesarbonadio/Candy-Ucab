@@ -131,9 +131,10 @@
               <ul class="treeview-menu">
                 <li><a href="../../../cliente/natural"><i class="fa fa-circle-o"></i>Natural</a></li>
                 <li><a href="../../../cliente/juridico"><i class="fa fa-circle-o"></i>Jurídico</a></li>
+                <li><a href="../../../cliente/contacto"><i class="fa fa-circle-o"></i>Contactos (Jurídico)</a></li>
+                <li><a href="../../../cliente/medio"><i class="fa fa-circle-o"></i>Medios de pago</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Encargos</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Ventas</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Carnets</a></li>
+                <li><a href="../../../cliente/presupuesto"><i class="fa fa-circle-o"></i>Vender</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -155,11 +156,12 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th-list"></i>
-                <span>Reportes</span>
+                <span>Promociones</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o"></i>Diario</a></li>
+                <li><a href="../../../promocion/descuento"><i class="fa fa-circle-o"></i>Descuentos</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Top - 10</a></li>
               </ul>
             </li>

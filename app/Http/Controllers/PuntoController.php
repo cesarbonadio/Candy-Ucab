@@ -44,6 +44,7 @@ public function __construct(){
 
       public function destroy($codigo){
         $punto = Punto::findOrFail($codigo);
+        DB::delete('delete from punto_cliente where fk_punto = ?',[$codigo]);
         $punto->delete();
         return Redirect::to('administrar/punto');
       }

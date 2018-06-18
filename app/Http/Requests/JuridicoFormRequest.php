@@ -36,8 +36,14 @@ class JuridicoFormRequest extends FormRequest
           'capital'=>'required|numeric',
           'fk_lugar'=>'required|integer',
           'fk_lugar_fiscal'=>'required|integer',
-          'fk_tienda'=>'integer',
-          'num_carnet'=>'max:50'
+          'fk_tienda'=>'nullable',
+          'num_carnet'=>'nullable|max:50',
+
+
+          /*telefono y tipo_telefono no son atributos de la tabla, pero ahora
+            es parte del formulario, por eso se coloca en las reglas*/
+         'telefono'=>'nullable|max:15|unique:telefono,valor',
+         'tipo_telefono'=>'nullable|max:15'
       ];
 
 

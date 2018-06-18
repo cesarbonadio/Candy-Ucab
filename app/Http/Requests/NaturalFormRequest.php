@@ -23,6 +23,15 @@ class NaturalFormRequest extends FormRequest
      */
     public function rules()
     {
+
+      /*
+      Estos nombres nada tienen que ver con el nombre
+      de cada atributo de la tabla, estos nombres estan asociados
+      al nombre de los formularios a nivel de vista para
+      ingresar los datos en la base de datos
+      */
+
+
         $rules = [
             'cedula'=>'required|integer|unique:naturale,cedula',
             'rif'=>'required|max:40|unique:naturale,rif',
@@ -30,8 +39,13 @@ class NaturalFormRequest extends FormRequest
             'nombre'=>'required|max:40',
             'apellido'=>'required|max:40',
             'fk_lugar'=>'required|integer',
-            'fk_tienda'=>'integer',
-            'num_carnet'=>'max:50'
+            'fk_tienda'=>'nullable',
+            'num_carnet'=>'nullable|max:50',
+
+             /*telefono y tipo_telefono no son atributos de la tabla, pero ahora
+               es parte del formulario, por eso se coloca en las reglas*/
+            'telefono'=>'nullable|max:15|unique:telefono,valor',
+            'tipo_telefono'=>'nullable|max:15'
         ];
 
 

@@ -29,11 +29,6 @@
              	<label for="rif">RIF</label>
              	<input type="text" name="rif" class="form-control" value="{{old('rif')}}" placeholder="Rif....">
 
-             </div>
-              <div class="form-group">
-             	<label for="num_carnet">Nro.Carnet</label>
-             	<input type="text" name="num_carnet" class="form-control" value="{{old('num_carnet')}}" placeholder="Nro.Carnet...">
-
              	</div>
               <div class="form-group">
              	<label for="correo">Correo</label>
@@ -62,21 +57,46 @@
               <div class="form-group">
               <label>Tienda</label>
               <select name="fk_tienda" class="form-control">
+								<option value="">...</option>
                 @foreach ($tienda as $ti)
                 <option value="{{$ti->codigo}}">{{$ti->nombre}} ({{$ti->tipo}})</option>
                 @endforeach
               </select>
-
              </div>
+
+
+						 <div class="row">
+              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+               <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" name="telefono" class="form-control" value="{{old('telefono')}}" placeholder="Numero de telefono...">
+               </div>
+             </div>
+						 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+							<div class="form-group">
+							  <label for="tipo_telefono">Tipo de telefono</label>
+								<select name="tipo_telefono" class="form-control">
+									<option value="radio">radio</option>
+	                <option value="fax">fax</option>
+									<option value="movil">movil</option>
+									<option value="fijo">fijo</option>
+									<option value="trabajo">trabajo</option>
+									<option value="casa">casa</option>
+	              </select>
+							 </div>
+						  </div>
+					   </div>
+
 
              <div class="form-group">
                <button class="btn btn-primary" type="submit">Guardar</button>
                <button class="btn btn-info" type="reset">Limpiar</button>
                <button class="btn btn-danger" type="reset"><a href="../natural" style="color: inherit;">Cancelar</a></button>
              </div>
+
           {!!Form::close()!!}
 
-	</div>
 
+	</div>
 </div>
 @stop

@@ -145,11 +145,11 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o"></i>Empleados</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Horarios</a></li>
+                <li><a href="../nomina/asistencia"><i class="fa fa-circle-o"></i>Asistencia</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Vacaciones</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Salarios</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Beneficios</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Llegadas</a></li>
+
               </ul>
             </li>
 

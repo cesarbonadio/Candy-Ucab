@@ -1,0 +1,783 @@
+﻿.panelsCarousel {
+    background-color: #FFE5D5;
+}
+
+.cardBorder {
+    border: none;
+}
+
+.cardHeaderPadding {
+    padding:1rem 0rem 0rem 0rem;
+    border:none;
+}
+
+h5::after {
+    margin-top:10px;
+    bottom:-15px;
+    left:0;
+    width:40px;
+    height:6px;
+    content:'';
+    display:block;
+    background-color:#FF4876;
+}
+
+.jumbotron {
+    background-image:url(../Imagenes/sorpresa1.jpg);
+    background-size:cover;
+
+    margin-bottom:0;
+}
+
+.fixedContainer {
+    background-color: #2b2e34;
+    height:inherit;
+}
+
+.customLogo {
+    margin-top: 10px;
+}
+
+.customNews {
+    height: 650px;
+    max-height:650px;
+    background-color: #FFE5D5;
+}
+
+.customDiario {
+    min-height: 90px;
+    background-color: white;
+}
+
+.customContainerSearch {
+    background-color: #2b2e34;
+    height:56px;
+}
+
+.customContainerLogo {
+    background-color: #25262B;
+    min-height: 90px;
+    padding-top:10px;
+
+}
+
+.customContainerMenu {
+    background-color: #25262B;
+    min-height: 60px;
+}
+
+.crop-height {
+    max-height: 650px;
+    overflow: hidden;
+}
+
+img.noticias {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+    width: auto\9;
+    -ms-interpolation-mode: bicubic;
+}
+
+.list-group.list-group-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+    .list-group.list-group-horizontal .list-group-item {
+        margin-bottom: 0;
+        margin-right: 0;
+        border-right-width: 0;
+    }
+
+        .list-group.list-group-horizontal .list-group-item:first-child {
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .list-group.list-group-horizontal .list-group-item:last-child {
+            border-top-right-radius: 4px;
+            border-bottom-left-radius: 0;
+            border-right-width: 1px;
+        }
+
+.botonColor {
+    color: #F7DECE;
+    padding: 10px 15px 10px 15px;
+    background-color: #25262B;
+}
+
+    .botonColor:hover {
+        color: #FF6890;
+    }
+a.current {
+    color: #FF6890;
+    background-color: #1D1D21;
+}
+
+.botonInicioSesion {
+    background-color: #FF4876;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 1px;
+    float: right;
+
+    min-height: inherit;
+}
+
+    .botonInicioSesion:hover {
+        background-color: #FF6890;
+        color:white;
+    }
+body {
+    background-color: #FFE5D5;
+}
+
+.btnBusqueda {
+    max-height: 34px;
+    border-radius:0;
+    border:none;
+    margin-top:10px;
+    background-color: #212226;
+    color:white;
+}
+
+.btnMenuBorde {
+    border-top: groove;
+    border-width: 1px;
+    border-color: black;
+    background-color: #25262B;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #2b2e34;
+}
+
+input.busqueda {
+    background-color: #212226;
+    min-width:inherit;
+}
+
+input.busqueda[type=text] {
+    border: none;
+    border-radius:0;
+    margin-top: 10px;
+    font-size: 15px;    
+}
+
+/*CSS del logo*/
+.slogan {
+    color:#FFE5D5;
+    font-style:oblique;
+    bottom:10px;
+    margin-left:-20px;
+    position:absolute;
+}
+
+/*CSS de los modals*/
+.modalHeader {
+    background-color: #FF4876;
+    color:#F7DECE;
+    border:none;
+}
+
+.modalBody {
+    background-color: #212226;
+    color: #F7DECE;
+}
+
+.modalButton {
+    background-color: #FF4876;
+    color: #F7DECE;
+}
+
+    .modalButton:hover {
+        background-color: #FF6890;
+        color: white;
+    }
+
+input.modalForms {
+    background-color: #1D1D21;
+    border:none;
+}
+
+.modalFooter{
+    background-color: #1D1D21;
+    border:none;
+}
+
+/*CSS del carousel de noticias*/
+
+.carousel-inner-news img{
+    display:block;
+    width:100%;
+
+}
+
+.carousel-news {
+    max-height:650px;
+    height:inherit;
+    overflow:hidden;
+}
+
+.carousel-item-news {
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100%;
+
+}
+
+    .carousel-item-news.img {
+        visibility:hidden;
+    }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color:#FF4876;
+    border-radius:50%;
+    width:25px;
+    height:25px;
+    background-size:90% 100%;
+    border: 1px solid black;
+}
+
+.carousel-indicators-news li {
+    height: 6px;
+    background-color: #FF9AB4;
+    border: .5px solid #FF4876;
+}
+
+.carousel-indicators-news .active {
+    background-color: #FF4876;
+}
+
+/* CSS del carousel de productos*/
+
+.imagenMinimo{
+    width:inherit;
+}
+
+    .imagenMinimo img {
+        display:inline-block;
+        overflow:hidden;
+        position:relative;
+        height:100%;
+        width:auto;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+    }
+
+
+    .imagenMinimo h4 {
+        color:black;
+        padding-top:10px;
+    }
+    .imagenMinimo a:hover {
+        text-decoration:none;
+    }
+
+
+.productsDiv {
+    height:252.5px;
+    width:252.5px;
+    overflow:hidden;
+    border-radius:5%;
+    background-color:white;
+    text-align:center;
+}
+
+.carousel-control-productos {
+    position:relative;
+    min-height:40px;
+    padding-top:10px;
+
+
+}
+
+.carousel-control-prev-icon-p,
+.carousel-control-next-icon-p {
+    background-color: #FF4876;
+    border-radius: 10%;
+    width: 100px;
+    height: 25px;
+    background-size: 90% 100%;
+    border: 1px solid #FF4876;
+}
+
+.checked {
+    color:#FF4876;
+}
+
+.botonAddToCart {
+    background-color: #FF4876;
+    color: #FFE5D5;
+    border-radius: 5px;
+}
+    .botonAddToCart:hover {
+        background-color: #FF9AB4;
+        color: white;
+        border-radius: 5px;
+    }
+
+/*CSS DE LA PARTE INFERIOR DE LA PAGINA*/
+
+.bottonpage {
+    background-color:#1D1D21;
+    height:350px;
+}
+
+.bottonImg {
+    margin-top:20px;
+}
+
+.bottonList {
+    margin-top:40px;
+}
+    .bottonList li {
+        border:none;
+        background-color:#1D1D21;
+        color:#FFE5D5;
+    }
+    .bottonList span{
+        color:#FF4876;
+    }
+    .bottonList a {
+        color:#FFE5D5;
+    }
+        .bottonList a:hover {
+            text-decoration:none;
+        }
+
+.bottonSlogan {
+    color:#F7DECE;
+    font-style:oblique;
+    margin-left:10px;
+}
+
+.copyright {
+    margin-top:10px;
+    color:#FFE5D5;
+}
+
+.copyrightDiv {
+    border-top: 1px groove;
+    border-color: #141414;
+    height: 50px;
+    background-color: #1D1D21;
+}
+
+/*REGISTRO CSS*/
+.registroDiv {
+    background-color:#2b2e34;
+    height:auto;
+   border-radius:5%;
+   max-width:inherit;
+}
+.registroDiv h4{
+    color:#FF6890;
+}
+    .registroDiv h6 {
+        color:#FF6890;
+    }
+    .registroDiv label {
+        color:#FF6890;
+    }
+
+    .registroDiv a {
+        background-color:#FF4876;
+        color:#FFE5D5;
+        margin-bottom:20px;
+    }
+
+/*PRODUCTOS CSS*/
+
+.productosDiv {
+}
+
+.productosDiv img{
+    margin-top:60px;
+    margin-bottom:20px;
+}
+
+.productosDiv h3{
+    margin-top:60px;
+    margin-left:20px;
+}
+    .productosDiv p {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+.cantidad {
+    border: none;
+    font-weight: bold;
+    width: 25px;
+    background-color: #FFE5D5;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+.mas {
+    color:#2b2e34;
+    outline:none;
+    border:none;
+    background:none;
+}
+
+    .mas:hover {
+        color:#FF4876;
+    }
+
+.menos {
+    color: #2b2e34;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+    .menos:hover {
+        color: #FF4876;
+    }
+
+.page-link {
+    background-color: #FF4876;
+    border-color:#D13B61;
+    color: #FFE5D5;
+}
+
+.page-link:hover {
+    background-color:#FF6890;
+    color:white;
+    border-color:#FF4876;
+}
+
+.page-item.active .page-link {
+    background-color: #3D1802;
+    color: #FFE5D5;
+    border-color: #2B1101;
+}
+
+.reviewDiv {
+    border-radius: 20px;
+    background-color: #592303;
+    border: 1px solid #3D1802;
+    padding:0;
+    margin-top:40px;
+}
+
+.card {
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    border-color: #3D1802;
+}
+
+.reviewDiv .card-body {
+    background-color:#592303;
+    border-radius:0;
+    height:600px;
+    overflow-y:scroll;
+}
+
+.reviewDiv .card-header {
+    border-radius: 20px 20px 0 0;
+    margin-top:-1px;
+    margin-left:-1px;
+    margin-right:-1px;
+    background-color: #471C02;
+}
+
+.reviewDiv .card-footer {
+    border-radius: 0 0 20px 20px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+    background-color: #471C02;
+}
+
+.reviewDiv h2{
+    color:#FFE5D5;
+    padding-left:10px;
+}
+
+.reviewDiv h4 {
+    color:#FFE5D5;
+}
+
+.reviewDiv i:not(.checked) {
+    color:#FFE5D5;
+}
+
+.badge {
+    background-color:#FF6890;
+    color:white;
+    padding-top:1px;
+}
+
+.media {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+}
+
+.media-body {
+    border-bottom: groove;
+    border-color: #471C02;
+    border: 1px;
+}
+
+.media h4{
+    color: #FFE5D5;
+}
+
+    .media h4 span .checked {
+        color:#FF4876;
+    }
+.media i {
+    color:#FFE5D5;
+}
+
+.media p {
+    color:#FFE5D5;
+}
+
+/*SCROLLBAR DE LA PAGINA*/
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FF4876;
+    border-radius: 10px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background:#FF6890;
+    }
+
+/*PERFIL DE USUARIO*/
+.perfilDiv {
+}
+
+
+
+    .perfilDiv h3 {
+        margin-top: 60px;
+        margin-left: 20px;
+    }
+
+    .perfilDiv p {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+.divFotoPerfil {
+    background-color:#2b2e34;
+    padding-bottom:30px;
+}
+.circularImg {
+    width:300px;
+    height:300px;
+    max-width:300px;
+    max-height:300px;
+    overflow:hidden;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:100%;
+    margin-top:60px;
+    margin-bottom:10px;
+}
+
+    .divFotoPerfil img {
+        height:100%;
+        width:auto;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+
+.divFotoPerfil a{
+    float:right;
+    margin-right:80px;
+}
+.divFotoPerfil span {
+    color: #FFE5D5;
+    border: 2px solid #FFE5D5;
+    border-radius: 30%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top:-20px;
+}
+
+.datosExtraDiv {
+    background-color: #36251C;
+    border: 1px solid #36251C;
+    padding: 0;
+}
+
+    .datosExtraDiv .nav {
+        border-color: #36251C;
+    }
+    .datosExtraDiv .nav-link {
+        background-color: #F7DECE;
+        color: #36251C;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        border: 2px solid #F7DECE;
+        border-bottom: none;
+    }
+    .datosExtraDiv .nav-link:hover {
+        background-color:#FFE5D5;
+    }
+        .datosExtraDiv .nav-link.active {
+            border: 2px solid #4A3327;
+            background-color: #4A3327;
+            color: #F7DECE;
+            border-bottom: none;
+        }
+
+    .datosExtraDiv h2 {
+        color: #FFE5D5;
+        padding-left: 10px;
+    }
+
+    .datosExtraDiv h4 {
+        color: #FFE5D5;
+    }
+
+    .datosExtraDiv i:not(.checked) {
+        color: #FFE5D5;
+    }
+    .datosExtraDiv .pagination{
+        margin:10px;
+    }
+
+.datosExtraDiv .media{
+    padding:10px;
+    border-bottom:2px solid black;
+    margin-top:0;
+}
+.divInfoPerfil {
+    background-color: #33363D;
+}
+
+.divInfoPerfil h6{
+    color:#FFE5D5;
+}
+
+    .divInfoPerfil h4 {
+        color:#FFE5D5;
+        padding-left:40px;
+        margin-top:30px;
+    }
+
+#personaNatural h6 {
+    display:inline;
+}
+
+#noTieneCarnet button {
+    background-color:#FF4876;
+    color:#FFE5D5;
+}
+
+#personaNatural {
+    padding:40px;
+}
+
+#personaNatural input[type=text]{
+    margin-top:10px;
+}
+
+#personaNatural button{
+    margin-top:10px;
+}
+
+#personaJuridica {
+    padding: 40px;
+}
+
+    #personaJuridica input[type=text] {
+        margin-top: 10px;
+    }
+
+    #personaJuridica button {
+        margin-top: 10px;
+    }
+    #personaJuridica h6 {
+        display: inline;
+    }
+
+#reviewsPorMi {
+    background-color: #4A3327;
+ 
+}
+
+.imagenCompras {
+    max-width:250px;
+    height:auto;
+}
+
+th {
+
+color:#FFE5D5;
+}
+
+td {
+color:#FFE5D5;
+}
+
+thead {
+    background-color:#FF4876;
+}
+
+.table-bordered {
+    width:100%;
+}
+
+    .table-bordered thead th {
+        border-color: #FF6890;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    .table-bordered td {
+        border-color: #4A3327;
+    }
+
+    /*CSS DE LA PARTE SUPERIOR CON LA SESION INICADA*/
+
+.botonIniciada {
+    color: #F7DECE;
+    padding: 10px 15px 10px 15px;
+    background-color: #25262B;
+}
+
+    .botonIniciada:hover {
+        color: #FF6890;
+    }
+
+.botonSesionIniciada {
+    background-color: #FF4876;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 1px;
+    float: right;
+    min-height: inherit;
+}
+
+    .botonSesionIniciada:hover {
+        background-color: #FF6890;
+        color: white;
+    }

@@ -23,7 +23,7 @@ class PresupuestoFormRequest extends FormRequest
      */
     public function rules()
     {
-       return [
+       $rules = [
           'fk_juridico'=>'nullable|string|max:40|exists:juridico,rif',
           'fk_naturale'=>'nullable|integer|exists:naturale,cedula',
           'tienda_descontar'=>'required|integer|exists:tienda,codigo', //la tienda de la que se va a descontar la cantidad pedida
@@ -38,6 +38,15 @@ class PresupuestoFormRequest extends FormRequest
           'cantidad4'=>'nullable|numeric|required_with:producto4',
           'cantidad5'=>'nullable|numeric|required_with:producto5'
       ];
+
+
+      if ($this->presupuesto){
+        $rules['tienda_descontar'] = 'nullable';
+        $rules['fk_juridico'] = 'nullable';
+        $rules['fk_naturale'] = 'nullable';
+      }
+
+ return $rules;
 
     }
 

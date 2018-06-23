@@ -27,7 +27,7 @@
                             </div>
                             <div class="modal-body modalBody">
                                 <?php
-                                        
+
                                         if ( isset( $_POST['login'])){
                                             require 'connect.php';
                                             $username = $_POST['username'];
@@ -60,7 +60,7 @@
                                 </form>
 
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                                     <a href='registroN' class="btn modalButton w-100">Cliente natural</a>
                                     <a href='registroJ' class="btn modalButton w-100">Cliente juridico</a>
                                 </div>
-                                
+
                             </div>
                             <div class="modal-footer modalFooter">
                                 <button class="btn modalButton" data-dismiss="modal">Cerrar</button>
@@ -212,12 +212,12 @@
                     @yield('producto')
                 </div>
             </div>
-            
-           
+
+
 
         </div>
-        
-       
+
+
     </div> <!--ULTIMOS PRODUCTOS-->
 
     <br/>

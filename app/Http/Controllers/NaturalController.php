@@ -123,7 +123,6 @@ class NaturalController extends Controller
           {
           $naturales=Natural::findOrFail($cedula);
           DB::delete('delete from telefono where fk_naturale = ?',[$cedula]);
-          DB::delete('delete from usuario where fk_naturale = ?',[$cedula]);
           $naturales->delete();
           return Redirect::to('cliente/natural');
           }

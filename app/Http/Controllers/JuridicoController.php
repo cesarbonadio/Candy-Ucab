@@ -129,7 +129,6 @@ class JuridicoController extends Controller
      	$juridico=Juridico::findOrFail($rif);
       DB::delete('delete from telefono where fk_juridico = ?',[$rif]);
       DB::delete('delete from contacto where fk_juridico = ?',[$rif]);
-      DB::delete('delete from usuario where fk_juridico = ?',[$rif]);
      	$juridico->delete();
      	return Redirect::to('cliente/juridico');
      }

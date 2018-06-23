@@ -15,7 +15,7 @@
 
 			<div class="modal-body">
 				<p>¿Seguro que quiere eliminar el cliente: <strong> {{$nat->nombre}} </strong> de cedula <strong> {{$nat->cedula}}</strong> ?</p>
-				<p>También se eliminarán todos los teléfonos y usuarios (si tiene) asociados.</p>
+				<p>También se eliminarán todos los teléfonos asociados.</p>
 			</div>
 
 

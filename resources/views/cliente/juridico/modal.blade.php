@@ -15,7 +15,7 @@
 
 			<div class="modal-body">
 				<p>¿Seguro que quiere eliminar el cliente: <strong> {{$jur->d_social}} </strong> de rif <strong> {{$jur->rif}}</strong> ?</p>
-				<p>También se eliminarán todos los teléfonos asociados.</p>
+				<p>También se eliminarán todos los teléfonos y usuarios (si tiene) asociados.</p>
 			</div>
 
 			<div class="modal-footer">

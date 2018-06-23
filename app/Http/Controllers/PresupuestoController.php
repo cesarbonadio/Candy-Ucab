@@ -83,43 +83,6 @@ public function __construct(){/**/}
       }
 
 
-          public function edit($codigo)
-          {
-             $presupuesto = Presupuesto::findOrFail($codigo);
-             $tienda=DB::table('tienda')->get();
-             return view ("cliente.presupuesto.edit",["tienda"=>$tienda,"presupuesto"=>$presupuesto]);
-          }
-
-
-          public function update(PresupuestoFormRequest $request, $codigo){
-
-            $presupuesto = Presupuesto::findOrFail($codigo);
-            $presupuesto->fecha = date('Y-m-d H:i:s');
-            $presupuesto->save();
-            $acumulado = 0;
-
-            for ($i = 1; $i <= 5; $i++) {
-                  if ($request->get('producto'.$i)){
-                $producto = Producto::findOrFail($request->get('producto'.$i));
-                $producto_presupuesto = new Producto_presupuesto;
-                $producto_presupuesto->cantidad = $request->get('cantidad'.$i);
-                $producto_presupuesto->precio = $producto->precio;
-                $producto_presupuesto->c_producto = $producto->codigo;
-                $producto_presupuesto->c_presupuesto = $presupuesto->codigo;
-                $producto_presupuesto->save();
-                $acumulado = $acumulado + ($producto->precio*$producto_presupuesto->cantidad);
-              }
-              else break;
-            }
-
-            $presupuesto->total= $presupuesto->total+ $acumulado;
-            $presupuesto->save();
-            return Redirect::to('cliente/presupuesto');
-
-          }
-
-
-
 
       public function destroy($codigo){
         $presupuesto = Presupuesto::findOrFail($codigo);

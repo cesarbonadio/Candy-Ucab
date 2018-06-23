@@ -23,13 +23,6 @@ class ProductoFormRequest extends FormRequest
      */
     public function rules()
     {
-      /*validar reglas a nivel de formulario*/
-      /*
-      Estos nombres nada tienen que ver con el nombre
-      de cada atributo de la tabla, estos nombres estan asociados
-      al nombre de los formularios a nivel de vista para
-      ingresar los datos en la base de datos
-      */
         return [
             'nombre'=>'required|max:40',
             'descripcion'=>'max:400',

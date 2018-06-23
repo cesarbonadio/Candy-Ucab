@@ -1,0 +1,9 @@
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\bin\interfazBootstrap.dll.config
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\bin\interfazBootstrap.dll
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\bin\interfazBootstrap.pdb
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\obj\Debug\interfazBootstrap.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\obj\Debug\interfazBootstrap.dll
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\obj\Debug\interfazBootstrap.pdb
+C:\Users\Usuario\Documents\Visual Studio 2017\Projects\interfazBootstrap\interfazBootstrap\obj\Debug\interfazBootstrap.csprojResolveAssemblyReference.cache

@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('/usuario/index/index');
 });
 
+Route::get('/reporte', function(){
+    return view('/reporte/index');
+});
+
+Route::get('reporte/top10punto','ReportesController@top_cliente_punto');
+Route::get('reporte/asistencia','ReportesController@asistencia_empleados');
+Route::get('reporte/empleado','ReportesController@empleados');
+
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
 Route::resource('cliente/natural','NaturalController');

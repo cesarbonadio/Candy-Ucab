@@ -30,8 +30,8 @@ class DescuentoController extends Controller
 
    public function create ()
    {
-        $producto=DB::table('producto')->get();
-     return view("promocion.descuento.create",["producto"=>$producto]);
+      $producto=DB::table('producto')->get();
+      return view("promocion.descuento.create",["producto"=>$producto]);
    }
 
    public function store (DescuentoFormRequest $request)

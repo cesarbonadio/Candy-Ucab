@@ -40,6 +40,24 @@
 				</tr>
 
 
+
+				<tr>
+          <td> <h4>  Ingrediente más usado en los productos &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/ingrediente"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
+
+				<tr>
+          <td> <h4> Marca de tarjeta de crédito más común &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/tarjeta"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
 		</div>
 	</div>
 </div>

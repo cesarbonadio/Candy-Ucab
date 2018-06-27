@@ -20,6 +20,7 @@ class ReportesController extends Controller
 
 
 
+
         public function top_cliente_punto() {
 
           $clientes = DB::select('select n.cedula as id, sum(p.adquirido) as suma, n.nombre as nombre
@@ -44,6 +45,7 @@ class ReportesController extends Controller
 
 
 
+
         public function asistencia_empleados() {
 
           $asistencias = DB::select('select a.hora_entrada,a.hora_salida, e.cedula, e.nombre, e.apellido, e.cargo
@@ -55,6 +57,37 @@ class ReportesController extends Controller
         }
 
 
+
+
+
+
+        public function ingrediente_productos(){
+
+          $ingrediente = DB::select('select t.codigo,t.descripcion, count(p.codigo) as veces_usado
+                                     from producto p, tipo t
+                                     where p.fk_tipo = t.codigo
+                                     group by p.fk_tipo,t.codigo,t.descripcion
+                                     order by count(p.codigo) desc
+                                    ');
+
+          return view ("reporte.ingrediente",["ingrediente"=>$ingrediente]);
+
+        }
+
+
+
+
+        public function tarjeta_credito(){
+
+          $tarjeta = DB::select('select m.marca_tarjeta as marca, count(m.marca_tarjeta) as veces_registrada
+                                     from medio_pago m
+                                     group by m.marca_tarjeta
+                                     order by count(m.marca_tarjeta) desc
+                                    ');
+
+          return view ("reporte.tarjeta",["tarjeta"=>$tarjeta]);
+
+        }
 
 
 

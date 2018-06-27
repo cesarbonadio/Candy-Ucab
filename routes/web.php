@@ -11,18 +11,25 @@
 |
 */
 
+/*ruta que lleva a la vista usuario*/
 Route::get('/', function () {
     return view('/usuario/index/index');
 });
 
+/*ruta que lleva a los reportes a nivel administrativo*/
 Route::get('/reporte', function(){
     return view('/reporte/index');
 });
 
+
+/*Para los reportes*/
 Route::get('reporte/top10punto','ReportesController@top_cliente_punto');
 Route::get('reporte/asistencia','ReportesController@asistencia_empleados');
 Route::get('reporte/empleado','ReportesController@empleados');
+Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
+Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
 
+/*Para el aplicativo como tal*/
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
 Route::resource('cliente/natural','NaturalController');

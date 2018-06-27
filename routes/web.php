@@ -45,9 +45,11 @@ Route::get('cliente/medio/createNatural','MedioController@createNatural');
 Route::get('cliente/medio/createJuridico','MedioController@createJuridico');
 Route::resource('cliente/medio','MedioController');
 Route::resource('promocion/descuento','DescuentoController');
+
 Route::get('cliente/presupuesto/createNatural','PresupuestoController@createNatural');
 Route::get('cliente/presupuesto/createJuridico','PresupuestoController@createJuridico');
 Route::resource('cliente/presupuesto','PresupuestoController');
+
 Route::get('nomina/asistencia','AsistenciaController@getimport')->name('asistencia.list');
 Route::post('postimport','AsistenciaController@postimport')->name('asistencia.import');
 

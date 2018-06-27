@@ -35,10 +35,11 @@
 					<td>{{$p->cedula}}</td>
           <td>{{$p->usuario}}</td>
 					 <td>
-						<a href="" data-target="#modal-delete-{{$p->codigo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						   <a href="{{URL::action('PresupuestoController@edit',$p->codigo)}}"><button class="btn btn-info">Editar</button></a>
+						   <a href="" data-target="#modal-delete-{{$p->codigo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					 </td>
 				  </tr>
-          
+
            @include ('cliente.presupuesto.modal')
         @endforeach
 			</table>

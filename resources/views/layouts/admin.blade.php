@@ -144,12 +144,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Empleados</a></li>
                 <li><a href="../nomina/asistencia"><i class="fa fa-circle-o"></i>Asistencia</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Vacaciones</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Salarios</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Beneficios</a></li>
-
               </ul>
             </li>
 

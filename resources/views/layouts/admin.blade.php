@@ -16,7 +16,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset('css/_all-skins.css')}}">
   <link rel="favicon" href="{{asset('img/candyIcon.png')}}">
-  <link rel="shortcut icon" href="{{asset('img/candyIcon.ico')}}">
+  <link rel="shortcut icon" href="{{asset('usuario/Imagenes/candyIcon.png')}}">
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -133,7 +133,7 @@
                 <li><a href="../../../cliente/juridico"><i class="fa fa-circle-o"></i>Jurídico</a></li>
                 <li><a href="../../../cliente/contacto"><i class="fa fa-circle-o"></i>Contactos (Jurídico)</a></li>
                 <li><a href="../../../cliente/medio"><i class="fa fa-circle-o"></i>Medios de pago</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Encargos</a></li>
+                <li><a href="../../../cliente/pedido"><i class="fa fa-circle-o"></i>Pedidos (físico)</a></li>
                 <li><a href="../../../cliente/presupuesto"><i class="fa fa-circle-o"></i>Vender</a></li>
               </ul>
             </li>

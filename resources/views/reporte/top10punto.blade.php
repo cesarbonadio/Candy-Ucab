@@ -14,7 +14,7 @@
 
         <thead>
           <th><h3>Rif o Cédula</h3></th>
-          <th><h3>Nombre</h3></th>
+          <th><h3>Nombre o Denominacion social</h3></th>
           <th><h3>Puntos</h3></th>
         </thead>
 

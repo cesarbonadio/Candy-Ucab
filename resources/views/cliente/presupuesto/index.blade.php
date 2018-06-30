@@ -18,7 +18,7 @@
 			<table class="table table-stripped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Código</th>
-          <th>Total acumulado</th>
+          <th>Total acumulado (por pagar)</th>
           <th>Fecha</th>
 					<th>Rif (juridico)</th>
           <th>Cedula (natural)</th>
@@ -35,15 +35,14 @@
 					<td>{{$p->cedula}}</td>
           <td>{{$p->usuario}}</td>
 					 <td>
-						   <a href="{{URL::action('PresupuestoController@edit',$p->codigo)}}"><button class="btn btn-info">Editar</button></a>
-						   <a href="" data-target="#modal-delete-{{$p->codigo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						   <a href="{{URL::action('PresupuestoController@edit',$p->codigo)}}"><button class="btn btn-info">Agregar productos</button></a>
 					 </td>
 				  </tr>
-
-           @include ('cliente.presupuesto.modal')
         @endforeach
 			</table>
 		</div>
 	</div>
+
+	{{$presupuesto->render()}}
 </div>
 @endsection

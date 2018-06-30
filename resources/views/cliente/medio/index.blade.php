@@ -19,6 +19,7 @@
 					<th>Código</th>
           <th>Tipo</th>
           <th>Número tarjeta</th>
+					<th>Marca tarjeta</th>
 					<th>Número de cheque</th>
           <th>Cliente Jurídico</th>
           <th>Cliente Natural</th>
@@ -30,6 +31,7 @@
 					<td>{{$m->codigo}}</td>
 					<td>{{$m->tipo}}</td>
 					<td>{{$m->num_tarjeta}}</td>
+					<td>{{$m->marca_tarjeta}}</td>
 					<td>{{$m->num_cheque}}</td>
 					<td>{{$m->rif}}</td>
           <td>{{$m->cedula}}</td>
@@ -47,6 +49,8 @@
 
 
 	</div>
+
+	{{$medio->render()}}
 
 </div>
 @endsection

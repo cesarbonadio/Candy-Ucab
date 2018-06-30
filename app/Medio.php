@@ -20,6 +20,7 @@ class Medio extends Model {
   'codigo',
   'tipo',
   'num_tarjeta',
+  'marca_tarjeta',
   'num_cheque',
   'fk_juridico',
   'fk_naturale'

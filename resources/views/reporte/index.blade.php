@@ -58,6 +58,14 @@
 				</tr>
 
 
+				<tr>
+          <td> <h4> Facturas de compras &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/factura"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
 		</div>
 	</div>
 </div>

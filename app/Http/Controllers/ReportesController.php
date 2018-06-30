@@ -77,6 +77,8 @@ class ReportesController extends Controller
 
 
 
+
+
         public function tarjeta_credito(){
 
           $tarjeta = DB::select('select m.marca_tarjeta as marca, count(m.marca_tarjeta) as veces_registrada
@@ -88,6 +90,37 @@ class ReportesController extends Controller
           return view ("reporte.tarjeta",["tarjeta"=>$tarjeta]);
 
         }
+
+
+
+
+
+
+        public function factura(){
+
+          $facturas = DB::select('select sum(p.monto) as suma, p.fk_pedido as pedido, n.cedula as idcliente , n.nombre as nombre, n.apellido as apellido, pe.fecha as fecha_pedido
+                                  from pago p, pedido pe , presupuesto pre, naturale n
+                                  where pe.codigo = p.fk_pedido
+                                  and pe.c_presupuesto = pre.codigo
+                                  and pre.fk_naturale = n.cedula
+                                  group by p.fk_pedido,n.cedula, n.nombre, n.apellido , pe.fecha
+
+                                  union
+
+                                  select sum(p.monto) as suma, p.fk_pedido as pedido, j.rif as idcliente , j.d_social as nombre, j.r_social as apellido, pe.fecha as fecha_pedido
+                                  from pago p, pedido pe , presupuesto pre, juridico j
+                                  where pe.codigo = p.fk_pedido
+                                  and pe.c_presupuesto = pre.codigo
+                                  and pre.fk_juridico = j.rif
+                                  group by p.fk_pedido,j.rif, j.d_social, j.r_social , pe.fecha
+
+                                  ');
+
+          return view ("reporte.factura",["factura"=>$facturas]);
+
+        }
+
+
 
 
 

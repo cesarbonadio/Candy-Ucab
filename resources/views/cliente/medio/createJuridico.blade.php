@@ -39,6 +39,14 @@
             </div>
 
 
+						<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+              <div class="form-group">
+             	<label for="marca_tarjeta">Marca de tarjeta</label>
+             	<input type="text" name="marca_tarjeta" class="form-control" placeholder="Marca..." value="{{old('marca_tarjeta')}}">
+             </div>
+            </div>
+
+
            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
              <div class="form-group">
              <label >Cliente Jurídico</label>

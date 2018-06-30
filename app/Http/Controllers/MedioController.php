@@ -24,7 +24,7 @@ public function __construct(){}
           $medios =DB::table('medio_pago as m')
           ->leftjoin('juridico as j','m.fk_juridico','=','j.rif')
           ->leftjoin('naturale as n','m.fk_naturale','=','n.cedula')
-          ->select('m.codigo','m.tipo','m.num_tarjeta','m.num_cheque','j.rif as rif','n.cedula as cedula')
+          ->select('m.codigo','m.tipo','m.num_tarjeta','m.num_cheque','m.marca_tarjeta','j.rif as rif','n.cedula as cedula')
           ->where('m.fk_juridico','LIKE','%'.$query.'%')
           ->orwhere('m.fk_naturale','LIKE','%'.$query.'%')
           ->orderBy('m.codigo','desc')
@@ -52,6 +52,7 @@ public function __construct(){}
 
           if ($request->get('tipo')=='tarjeta'){
             $medio->num_tarjeta = $request->get('num');
+            $medio->marca_tarjeta = $request->get('marca_tarjeta');
           } else if ($request->get('tipo')=='cheque'){
             $medio->num_cheque = $request->get('num');
           }

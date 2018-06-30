@@ -28,6 +28,11 @@ Route::get('reporte/asistencia','ReportesController@asistencia_empleados');
 Route::get('reporte/empleado','ReportesController@empleados');
 Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
 Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
+Route::get('reporte/factura','ReportesController@factura');
+
+
+
+Route::resource('cliente/pedido','PedidoController');
 
 /*Para el aplicativo como tal*/
 Route::resource('administrar/producto','ProductoController');
@@ -45,6 +50,7 @@ Route::get('cliente/medio/createNatural','MedioController@createNatural');
 Route::get('cliente/medio/createJuridico','MedioController@createJuridico');
 Route::resource('cliente/medio','MedioController');
 Route::resource('promocion/descuento','DescuentoController');
+
 
 Route::get('cliente/presupuesto/createNatural','PresupuestoController@createNatural');
 Route::get('cliente/presupuesto/createJuridico','PresupuestoController@createJuridico');

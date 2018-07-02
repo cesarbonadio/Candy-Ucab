@@ -24,6 +24,7 @@ class Presupuesto extends Model
   'fk_juridico',
   'fk_naturale',
   'fk_tienda',
+  'fk_tienda_compra',
   'fk_usuario'
   ];
 

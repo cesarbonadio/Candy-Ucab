@@ -26,7 +26,7 @@ class PresupuestoFormRequest extends FormRequest
       $rules = [
          'fk_juridico'=>'nullable|string|max:40|exists:juridico,rif',
          'fk_naturale'=>'nullable|integer|exists:naturale,cedula',
-         'tienda_descontar'=>'required|integer|exists:tienda,codigo', //la tienda de la que se va a descontar la cantidad pedida
+         'fk_tienda_compra'=>'required|integer|exists:tienda,codigo', //la tienda de la que se va a descontar la cantidad pedida
          'producto1'=>'nullable|integer|exists:producto,codigo|required_with:cantidad1',
          'producto2'=>'nullable|integer|exists:producto,codigo|required_with:cantidad2',
          'producto3'=>'nullable|integer|exists:producto,codigo|required_with:cantidad3',

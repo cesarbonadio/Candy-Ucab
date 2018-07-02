@@ -3,7 +3,7 @@
 
 <div class ="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Verder a cliente en tienda (Generar presupuesto)</h3>
+		<h3>Todos los presupuestos de clientes</h3>
     <a href="presupuesto/createNatural"><button class="btn btn-succes">Añadir Natural</button></a>
     <a href="presupuesto/createJuridico"><button class="btn btn-succes">Añadir Juridico</button></a>
     <br>
@@ -23,8 +23,10 @@
 					<th>Rif (juridico)</th>
           <th>Cedula (natural)</th>
           <th>Usuario</th>
+					<th>Tienda compra</th>
           <th>Opciones</th>
 				</thead>
+
 
             @foreach ($presupuesto as $p)
 				  <tr>
@@ -34,6 +36,7 @@
 					<td>{{$p->rif}}</td>
 					<td>{{$p->cedula}}</td>
           <td>{{$p->usuario}}</td>
+					<td>{{$p->tienda_compra}}</td>
 					 <td>
 						   <a href="{{URL::action('PresupuestoController@edit',$p->codigo)}}"><button class="btn btn-info">Agregar productos</button></a>
 					 </td>

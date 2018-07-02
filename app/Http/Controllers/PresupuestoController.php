@@ -26,15 +26,17 @@ public function __construct(){/**/}
 
           if($request){
           $query=trim($request->get('searchText'));
-          $presupuestos =DB::table('presupuesto as p')
+          $presupuestos = DB::table('presupuesto as p')
 
           ->leftjoin('juridico as j','p.fk_juridico','=','j.rif')
           ->leftjoin('naturale as n','p.fk_naturale','=','n.cedula')
           ->leftjoin('tienda as t','p.fk_tienda',"=",'t.codigo')
+          ->leftjoin('tienda as tcompra','p.fk_tienda_compra','=','tcompra.codigo')
           ->leftjoin('usuario as u','p.fk_usuario','=','u.id')
 
-          ->select('p.codigo','p.total','p.fecha','j.rif as rif','n.cedula as cedula','t.codigo as tienda','u.id as usuario')
+          ->select('p.codigo','p.total','p.fecha','j.rif as rif','n.cedula as cedula','t.nombre as tienda','tcompra.nombre as tienda_compra','u.id as usuario')
           ->where('p.codigo','LIKE','%'.$query.'%')
+          ->whereNull('p.fk_tienda')
           ->orderBy('p.total','desc')
           ->paginate(7);
 
@@ -60,6 +62,7 @@ public function __construct(){/**/}
           $presupuesto->fecha = date('Y-m-d H:i:s');
           $presupuesto->fk_naturale = $request->get('fk_naturale');
           $presupuesto->fk_juridico = $request->get('fk_juridico');
+          $presupuesto->fk_tienda_compra = $request->get('fk_tienda_compra');
           $presupuesto->total = '0';
           $presupuesto->save();
           $acumulado = 0;

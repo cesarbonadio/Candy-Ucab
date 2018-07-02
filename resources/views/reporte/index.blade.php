@@ -65,6 +65,22 @@
 					</td>
 				</tr>
 
+				<tr>
+          <td> <h4> Ingresos vs Egresos (tienda) &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/tienda_ingresos_egresos"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td> <h4> Producto más vendido por tienda &nbsp; &nbsp; </h4> </td>
+					<td>
+							<a href="reporte/top_producto_tienda"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
 
 		</div>
 	</div>

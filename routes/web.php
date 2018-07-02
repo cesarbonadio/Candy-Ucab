@@ -29,6 +29,8 @@ Route::get('reporte/empleado','ReportesController@empleados');
 Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
 Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
 Route::get('reporte/factura','ReportesController@factura');
+Route::get('reporte/tienda_ingresos_egresos','ReportesController@tienda_ingresos_egresos');
+Route::get('reporte/top_producto_tienda','ReportesController@top_producto_tienda');
 
 
 
@@ -37,6 +39,10 @@ Route::resource('cliente/pedido','PedidoController');
 /*Para el aplicativo como tal*/
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
+
+/*para las reposiciones de la fabrica*/
+Route::resource('inventario/pedido','ReposicionController');
+
 Route::resource('cliente/natural','NaturalController');
 Route::resource('cliente/juridico','JuridicoController');
 Route::resource('usuario/index','uProductoController');

@@ -30,7 +30,7 @@
            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
              <div class="form-group">
              <label>Tienda donde se realiza la compra</label>
-             <select name="tienda_descontar" class="form-control">
+             <select name="fk_tienda_compra" class="form-control">
                @foreach ($tienda as $t)
                <option value="{{$t->codigo}}"> {{$t->nombre}} ({{($t->tipo)}})</option>
                @endforeach

@@ -34,7 +34,7 @@ class ReposicionController extends Controller
                                    and pre.fk_tienda is not null
                                    order by ps.cambio desc
                                    ');
-            return view('inventario.pedido.index',["pedido"=>$pedidos]);
+            return view('inventario.reposicion.index',["pedido"=>$pedidos]);
            }
         }
 
@@ -42,7 +42,7 @@ class ReposicionController extends Controller
          public function edit($codigo) {
             $pedido = Pedido::findOrFail($codigo);
             $estatus = DB::table('estatus')->get();
-            return view("inventario.pedido.edit",["pedido"=>$pedido,"estatus"=>$estatus]);
+            return view("inventario.reposicion.edit",["pedido"=>$pedido,"estatus"=>$estatus]);
          }
 
 
@@ -54,7 +54,7 @@ class ReposicionController extends Controller
            $pedido_estatus->c_pedido = $codigo;
            $pedido_estatus->c_estatus = $request->get('c_estatus');
            $pedido_estatus->save();
-           return Redirect::to('inventario/pedido');
+           return Redirect::to('inventario/reposicion');
          }
 
           public function destroy()

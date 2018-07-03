@@ -19,7 +19,7 @@
 </div>
 
 
-    {!! Form::model($pedido,['method'=>'PATCH','route'=>['pedido.update',$pedido->codigo]]) !!}
+    {!! Form::model($pedido,['method'=>'PATCH','route'=>['reposicion.update',$pedido->codigo]]) !!}
     {{Form::token()}}
 
 
@@ -35,7 +35,6 @@
      </div>
    </div>
 
-
      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
      <div class="form-group">
        <br>
@@ -43,7 +42,7 @@
       <button class="btn btn-danger" type="reset"><a href="../../pedido" style="color: inherit;">Cancelar</a></button>
       </div>
      </div>
-
+		 
   {!!Form::close()!!}
 
 @stop

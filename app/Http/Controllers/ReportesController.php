@@ -161,6 +161,21 @@ class ReportesController extends Controller
 
 
 
+        public function top_retraso_estatus(){
+
+          $estatus = DB::select(' select count(ps.codigo) as total, ps.c_estatus, e.descripcion
+                                  from pedido_estatus as ps, estatus as e
+                                  where ps.c_estatus = e.codigo
+                                  group by ps.c_estatus
+                                  order by count(ps.codigo) desc
+                                  limit 1
+                                   ');
+
+          return view ("reporte.top_retraso_estatus",["estatus"=>$estatus]);
+        }
+
+
+
 
         public function empleados() {
 

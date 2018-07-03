@@ -9,6 +9,7 @@ use candyucab\Presupuesto;
 use candyucab\Producto_presupuesto;
 use candyucab\Producto;
 use candyucab\Pedido;
+use candyucab\Punto_cliente;
 use Illuminate\Support\Facades\Redirect;
 use candyucab\Http\Requests\PresupuestoFormRequest;
 use DB;
@@ -57,11 +58,29 @@ public function __construct(){/**/}
       }
 
 
+      public function encontrar_valor_actual(){
+           $punto = DB::select('select codigo,valor FROM `punto` WHERE fecha_fin is null');
+           return $punto;
+      }
+
+
       public function store(PresupuestoFormRequest $request){
           $presupuesto = new Presupuesto;
           $presupuesto->fecha = date('Y-m-d H:i:s');
           $presupuesto->fk_naturale = $request->get('fk_naturale');
           $presupuesto->fk_juridico = $request->get('fk_juridico');
+
+          //guardo que el cliente se gano un punto con la compra fisica (cuando pide un presupuesto)
+          $arreglo_punto = $this->encontrar_valor_actual();
+          $punto_cliente = new Punto_cliente;
+          $punto_cliente->adquirido = 1;
+          $punto_cliente->fk_punto = $arreglo_punto[0]->codigo;
+          $punto_cliente->valor = $arreglo_punto[0]->valor;
+          if ($request->get('fk_naturale')) $punto_cliente->fk_naturale = $request->get('fk_naturale');
+          else if ($request->get('fk_juridico')) $punto_cliente->fk_juridico = $request->get('fk_juridico');
+          $punto_cliente->save();
+
+
           $presupuesto->fk_tienda_compra = $request->get('fk_tienda_compra');
           $presupuesto->total = '0';
           $presupuesto->save();

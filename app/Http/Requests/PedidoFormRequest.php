@@ -24,8 +24,10 @@ class PedidoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'fk_medio_pago'=>'required|int',
-            'monto'=>'required|numeric'
+            'fk_medio_pago'=>'nullable|int',
+            'monto'=>'required|numeric',
+            'tipo_pago' => 'required|string'
         ];
     }
+    
 }

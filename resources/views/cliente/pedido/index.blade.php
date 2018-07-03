@@ -3,7 +3,7 @@
 
 <div class ="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de pedidos</h3>
+		<h3>Listado de pedidos (clientes)</h3>
 	</div>
 </div>
 <br>
@@ -21,7 +21,6 @@
           <th>Opciones</th>
 				</thead>
 
-
       @foreach ($pedido as $p)
 				<tr>
 					<td>{{ $p->codigo}}</td>
@@ -29,15 +28,14 @@
 					<td>{{ $p->c_presupuesto}}</td>
           <td>{{ $p->total}}</td>
 					<td>
+						<a href="{{URL::action('PedidoController@pagar_punto',$p->codigo)}}"><button class = "btn btn-info">Pagar con punto</button></a>
 						<a href="{{URL::action('PedidoController@edit',$p->codigo)}}"><button class="btn btn-info">Pagar</button></a>
 					</td>
 				</tr>
       @endforeach
 
-
 		</table>
 	</div>
 	</div>
-
 </div>
 @endsection

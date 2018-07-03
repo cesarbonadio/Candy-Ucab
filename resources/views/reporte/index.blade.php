@@ -81,6 +81,14 @@
 				</tr>
 
 
+				<tr>
+					<td> <h4> Estatus que genera mas retraso en los pedidos &nbsp; &nbsp; </h4> </td>
+					<td>
+							<a href="reporte/top_retraso_estatus"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
+
 
 		</div>
 	</div>

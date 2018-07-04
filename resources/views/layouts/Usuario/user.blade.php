@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,60 +15,9 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="modal fade" data-keyboard="false" id="loginModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modalHeader">
-                                <h4 class="modal-title">Iniciar Sesion</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body modalBody">
-                                <?php
-                                        
-                                        if ( isset( $_POST['login'])){
-                                            require 'connect.php';
-                                            $username = $_POST['username'];
-                                            $username = $_POST['password'];
-                                            $result = mysqli_query($con, 'select * from usuario where username="'.$username.'" and password="'.$password.'"');
-                                            if (mysqli_num_rows($result)) {
-                                                session_start();
-                                                $_SESSION['id']=$result->id;
-                                                echo "id: ". $_SESSION['id'];
-                                            }
-                                            else echo "Mal";
-                                        }
-
-                                    ?>
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="inputUserName">Usuario</label>
-                                        <input class="form-control modalForms" placeholder="Nombre de Usuario" type="text" name="username" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">Contraseña</label>
-                                        <input class="form-control modalForms" placeholder="Contraseña" type="password" name="password" />
-                                    </div>
-                                    <div class="modal-footer modalFooter">
-                                        <button type="submit" value="login" name="login" class="btn modalButton">Iniciar Sesion</button>
-
-                                        <button class="btn modalButton" data-dismiss="modal">Cerrar</button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<<?php 
+    session_start();     
+?>
 
      <div class="container">
         <div class="row">
@@ -97,9 +48,28 @@
             </div>
         </div>
     </div>
+    <?php if ($_SESSION['ini']==1) { ?>
 
-    <div class="customContainerSearch" style="display:none">
+ <div class="customContainerSearch"><!--Dirige a la parte administrativa-->
         <div class="fixed-top fixedContainer">
+            <div class="container" style="min-height:inherit">
+                <div class="row" style="min-height:inherit">
+
+                    <div class="col-sm-5 offset-7" style="min-height:inherit">
+                        <div class="float-right">
+                            <div class="btn-group float-right" style="min-height:inherit">
+                                <a href="/administrar/producto" class="btn modalButton">Administrar sitio</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--Dirige a la parte administrativa-->
+
+    <div class="customContainerSearch">
+        <div class=" fixedContainer">
             <div class="container" style="min-height:inherit">
                 <div class="row" style="min-height:inherit">
                     <div class="col-sm-7">
@@ -116,18 +86,20 @@
 
                         <div class="float-right">
                             <div style="display:inline-block;margin-right:5px;color:#FFE5D5">
-                                <h6 class="text-justify"><small>Nombre Usuario</small></h6>
-                                <h6 class="text-justify"><small>Puntos</small></h6>
+                                <h6 class="text-justify" style="text-transform: capitalize;"><small><?php echo $_SESSION['username']?></small></h6>
+                                <h6 class="text-justify"><small><?php echo $_SESSION['puntos']?> pts</small></h6>
                             </div>
                             <div class="btn" style="min-height:inherit">
 
                                 <a href="/perfil.html" class="btn font-weight-bold botonIniciada" style="border-radius: 50%;margin-top:-25px; background-color: #FF4876;padding:0 2.5px 0 2.5px;"><i class="fa fa-user-circle fa-2x"></i></a>
 
                             </div>
-                            <div class="btn" style="min-height:inherit">
-                                <a href="#" class="btn font-weight-bold botonSesionIniciada botonIniciada" style="margin-top:-25px">100.502 bs <i class="fa fa-shopping-cart fa-lg float-right"></i></a>
+       
+                            <div class="btn-group float-right" style="min-height:inherit">
+                            <a href="#" class="btn font-weight-bold botonSesionIniciada botonIniciada ">Carrito <i class="fa fa-shopping-cart fa-md float-right"></i></a>  
+                            <a href="/usuario/cerrar" class="btn modalButton">Cerrar Sesion</a>
 
-                            </div>
+                        </div>
                         </div>
 
                     </div>
@@ -135,7 +107,7 @@
             </div>
         </div>
     </div>
-
+<?php } else { ?>
     <div class="customContainerSearch">
         <div class="fixed-top fixedContainer">
             <div class="container" style="min-height:inherit">
@@ -152,7 +124,7 @@
                     </div>
                     <div class="col-sm-3" style="min-height:inherit">
                         <div class="btn-group float-right" style="min-height:inherit">
-                            <a href="index.html" class="btn font-weight-bold botonInicioSesion botonColor" data-target="#loginModal" data-toggle="modal">Login</a>
+                            <a href="/usuario/iniciar" class="btn font-weight-bold botonInicioSesion botonColor">Login</a>
                             <a href="index.html" class="btn font-weight-bold botonInicioSesion botonColor" data-target="#registerModal" data-toggle="modal">Register</a>
                         </div>
                     </div>
@@ -160,7 +132,7 @@
             </div>
         </div>
     </div> <!--La barra de busqueda superior--><!--COPIAR-->
-
+<?php } ?>
     <div class="customContainerLogo">
         <div class="container">
             <div class="row">
@@ -334,7 +306,11 @@
             </div>
         </div>
     </div>
+<?php
+echo "<h2>Your Input:</h2>";
+echo $_SESSION['username'];
 
+?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{asset('usuario/Bootstrap/js/bootstrap.min.js')}}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

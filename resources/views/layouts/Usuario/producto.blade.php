@@ -14,59 +14,9 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="modal fade" data-keyboard="false" id="loginModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modalHeader">
-                                <h4 class="modal-title">Iniciar Sesion</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body modalBody">
-                                <?php
-                                        
-                                        if ( isset( $_POST['login'])){
-                                            require 'connect.php';
-                                            $username = $_POST['username'];
-                                            $username = $_POST['password'];
-                                            $result = mysqli_query($con, 'select * from usuario where username="'.$username.'" and password="'.$password.'"');
-                                            if (mysqli_num_rows($result)) {
-                                                session_start();
-                                                $_SESSION['id']=$result->id;
-                                                echo "id: ". $_SESSION['id'];
-                                            }
-                                            else echo "Mal";
-                                        }
-
-                                    ?>
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="inputUserName">Usuario</label>
-                                        <input class="form-control modalForms" placeholder="Nombre de Usuario" type="text" name="username" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">Contraseña</label>
-                                        <input class="form-control modalForms" placeholder="Contraseña" type="password" name="password" />
-                                    </div>
-                                    <div class="modal-footer modalFooter">
-                                        <button type="submit" value="login" name="login" class="btn modalButton">Iniciar Sesion</button>
-
-                                        <button class="btn modalButton" data-dismiss="modal">Cerrar</button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <<?php 
+    session_start();     
+?>
 
      <div class="container">
         <div class="row">
@@ -97,8 +47,9 @@
             </div>
         </div>
     </div>
+    <?php if ($_SESSION['ini']==1) { ?>
 
-    <div class="customContainerSearch" style="display:none">
+    <div class="customContainerSearch">
         <div class="fixed-top fixedContainer">
             <div class="container" style="min-height:inherit">
                 <div class="row" style="min-height:inherit">
@@ -116,8 +67,8 @@
 
                         <div class="float-right">
                             <div style="display:inline-block;margin-right:5px;color:#FFE5D5">
-                                <h6 class="text-justify"><small>Nombre Usuario</small></h6>
-                                <h6 class="text-justify"><small>Puntos</small></h6>
+                                <h6 class="text-justify" style="text-transform: capitalize;"><small><?php echo $_SESSION['username']?></small></h6>
+                                <h6 class="text-justify"><small><?php echo $_SESSION['puntos']?> pts</small></h6>
                             </div>
                             <div class="btn" style="min-height:inherit">
 
@@ -125,7 +76,7 @@
 
                             </div>
                             <div class="btn" style="min-height:inherit">
-                                <a href="#" class="btn font-weight-bold botonSesionIniciada botonIniciada" style="margin-top:-25px">100.502 bs <i class="fa fa-shopping-cart fa-lg float-right"></i></a>
+                                <a href="#" class="btn font-weight-bold botonSesionIniciada botonIniciada" style="margin-top:-25px">Carrito <i class="fa fa-shopping-cart fa-lg float-right"></i></a>
 
                             </div>
                         </div>
@@ -135,6 +86,7 @@
             </div>
         </div>
     </div>
+<?php } else { ?>
 
     <div class="customContainerSearch">
         <div class="fixed-top fixedContainer">
@@ -160,6 +112,7 @@
             </div>
         </div>
     </div> <!--La barra de busqueda superior--><!--COPIAR-->
+<?php } ?>
 
     <div class="customContainerLogo">
         <div class="container">

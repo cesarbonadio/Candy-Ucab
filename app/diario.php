@@ -18,7 +18,8 @@ class diario extends Model
         'codigo',
         'descripcion',
         'fecha_emision',
-        'fecha_vencimiento' 
+        'fecha_vencimiento',
+        'fk_empleado' 
   ];
 
   protected $guarded = [];

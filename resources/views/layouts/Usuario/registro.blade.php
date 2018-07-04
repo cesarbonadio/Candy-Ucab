@@ -13,59 +13,11 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="modal fade" data-keyboard="false" id="loginModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modalHeader">
-                                <h4 class="modal-title">Iniciar Sesion</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <<?php 
+    session_start();     
+?>
+    <?php if ($_SESSION['ini']!=1) { ?>
 
-                            </div>
-                            <div class="modal-body modalBody">
-                                <?php
-                                        
-                                        if ( isset( $_POST['login'])){
-                                            require 'connect.php';
-                                            $username = $_POST['username'];
-                                            $username = $_POST['password'];
-                                            $result = mysqli_query($con, 'select * from usuario where username="'.$username.'" and password="'.$password.'"');
-                                            if (mysqli_num_rows($result)) {
-                                                session_start();
-                                                $_SESSION['id']=$result->id;
-                                                echo "id: ". $_SESSION['id'];
-                                            }
-                                            else echo "Mal";
-                                        }
-
-                                    ?>
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="inputUserName">Usuario</label>
-                                        <input class="form-control modalForms" placeholder="Nombre de Usuario" type="text" name="username" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">Contraseña</label>
-                                        <input class="form-control modalForms" placeholder="Contraseña" type="password" name="password" />
-                                    </div>
-                                    <div class="modal-footer modalFooter">
-                                        <button type="submit" value="login" name="login" class="btn modalButton">Iniciar Sesion</button>
-
-                                        <button class="btn modalButton" data-dismiss="modal">Cerrar</button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
      <div class="container">
         <div class="row">
@@ -151,7 +103,7 @@
                     </div>
                     <div class="col-sm-3" style="min-height:inherit">
                         <div class="btn-group float-right" style="min-height:inherit">
-                            <a href="index.html" class="btn font-weight-bold botonInicioSesion botonColor" data-target="#loginModal" data-toggle="modal">Login</a>
+                            <a href="/usuario/iniciar" class="btn font-weight-bold botonInicioSesion botonColor">Login</a>
                             <a href="index.html" class="btn font-weight-bold botonInicioSesion botonColor" data-target="#registerModal" data-toggle="modal">Register</a>
                         </div>
                     </div>
@@ -247,7 +199,11 @@
             </div>
         </div>
     </div>
-
+<?php } else { ?>
+    <div>
+        <h1 style="text-align: center; margin-top: 20%;margin-bottom: 20%;">NO PUEDES ACCEDER A ESTA PAGINA</h1>
+    </div>
+<?php } ?>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

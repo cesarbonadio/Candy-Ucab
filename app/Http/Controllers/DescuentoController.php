@@ -3,7 +3,6 @@
 namespace candyucab\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use candyucab\Descuento;
 use Illuminate\Support\Facades\Redirect;
 use candyucab\Http\Requests\DescuentoFormRequest;

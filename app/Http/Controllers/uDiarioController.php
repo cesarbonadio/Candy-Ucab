@@ -17,15 +17,22 @@ class uDiarioController extends Controller
 
    public function index (Request $request)
    {
-       if ($request){
-     $query=trim($request ->get('searchText'));
-     $mytime = Carbon::now();
-     $cont = 0;
-     $diario=DB::select('Select * from diario where fecha_emision <"'.$mytime.'" and "'.$mytime.'" < fecha_vencimiento');
-     $descuento=DB::select('Select * from descuento d, diario_descuento dd where d.codigo = dd.c_descuento and dd.c_diario = "'.$diario[0]->codigo.'"');
-     $producto=DB::select('Select * from producto p where p.codigo ="'.$descuento[0]->fk_producto.'" union Select * from producto p where p.codigo ="'.$descuento[1]->fk_producto.'"');//En vista que solo son dos productos por eso se crean dos variables
+        if ($request){
+          $query=trim($request ->get('searchText'));
+          $mytime = Carbon::now();
+          $cont = 0;
+          $diario=DB::select('Select * from diario where fecha_emision <"'.$mytime.'" and "'.$mytime.'" < fecha_vencimiento');
+          if(!empty($diario)){
+            $descuento=DB::select('Select * from descuento d, diario_descuento dd where d.codigo = dd.c_descuento and dd.c_diario = "'.$diario[0]->codigo.'"');
+            $producto=DB::select('Select * from producto p, diario d, descuento de, diario_descuento dd where p.codigo = de.fk_producto and dd.c_diario ="'.$diario[0]->codigo.'" and de.codigo = dd.c_descuento');//En vista que solo son dos productos por eso se crean dos variables
+                   //     $producto=DB::select('Select * from producto p where p.codigo ="'.$descuento[0]->fk_producto.'" union Select * from producto p where p.codigo ="'.$descuento[1]->fk_producto.'"');//En vista que solo son dos productos por eso se crean dos variables
 
-     return view('usuario.diario.diar',["diario"=>$diario,"descuento"=>$descuento, "producto"=>$producto, "cont"=>$cont]);
+            return view('usuario.diario.diar',["diario"=>$diario,"descuento"=>$descuento, "producto"=>$producto, "cont"=>$cont]);
+          }
+          else {
+            $diario=DB::select('Select * from diario where fecha_emision >"'.$mytime.'"');
+            return view('usuario.diario.nodiar',["diario"=>$diario]);
+          }
         }
    }
 

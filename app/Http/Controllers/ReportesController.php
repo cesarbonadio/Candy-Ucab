@@ -161,7 +161,55 @@ class ReportesController extends Controller
 
           return view ("reporte.empleado",["empleado"=>$empleados/*,"retardo"=>$retardos*/]);
         }
+       public function metodo(){
 
+          $metodo = DB::select('select m.marca_tarjeta as marca, count(p.fk_medio_pago) as veces_usado
+                                     from medio_pago m, pago p
+                                     where p.fk_medio_pago = m.codigo
+                                     group by m.marca_tarjeta
+                                     order by count(p.fk_medio_pago) desc
+                                    ');
+
+          return view ("reporte.metodo",["metodo"=>$metodo]);
+
+        }
+        public function productoGeneral(){
+
+          $productoGeneral  = DB::select('select p.nombre as pronombre, sum(pp.cantidad) as veces_comprado
+                                     from producto p, producto_presupuesto pp
+                                     where pp.c_producto = p.codigo
+                                     group by p.nombre
+                                     order by sum(pp.cantidad) desc
+                                    ');
+
+          return view ("reporte.productoGeneral",["productoGeneral"=>$productoGeneral]);
+
+        }
+
+        public function productoPorTienda(){
+
+          $productoPorTienda  = DB::select('select p.nombre as pronombre, sum(pp.cantidad) as veces_comprado, t.nombre as tnombre
+                                     from producto p, producto_presupuesto pp, tienda t, presupuesto pr
+                                     where pp.c_producto = p.codigo and pp.c_presupuesto = pr.codigo and pr.fk_tienda_compra = t.codigo
+                                     group by t.nombre, p.nombre
+                                     order by sum(pp.cantidad) desc
+                                    ');
+
+          return view ("reporte.productoPorTienda",["productoPorTienda"=>$productoPorTienda]);
+
+        }
+        ublic function top5Clientes(){
+
+          $top5Clientes  = DB::select('select p.nombre as pronombre, sum(pp.cantidad) as veces_comprado, t.nombre as tnombre
+                                     from producto p, producto_presupuesto pp, tienda t, presupuesto pr
+                                     where pp.c_producto = p.codigo and pp.c_presupuesto = pr.codigo and pr.fk_tienda_compra = t.codigo
+                                     group by t.nombre, p.nombre
+                                     order by sum(pp.cantidad) desc
+                                    ');
+
+          return view ("reporte.top5Clientes",["top5Clientes"=>$top5Clientes]);
+
+        }
 
 
 }

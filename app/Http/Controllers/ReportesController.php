@@ -254,7 +254,7 @@ class ReportesController extends Controller
           return view ("reporte.productoPorTienda",["productoPorTienda"=>$productoPorTienda]);
 
         }
-        ublic function top5Clientes(){
+        public function top5Clientes(){
 
           $top5Clientes  = DB::select('select p.nombre as pronombre, sum(pp.cantidad) as veces_comprado, t.nombre as tnombre
                                      from producto p, producto_presupuesto pp, tienda t, presupuesto pr

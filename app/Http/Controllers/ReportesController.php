@@ -214,8 +214,8 @@ class ReportesController extends Controller
 
           return view ("reporte.empleado",["empleado"=>$empleados/*,"retardo"=>$retardos*/]);
         }
-  
-  
+
+
        public function metodo(){
 
 

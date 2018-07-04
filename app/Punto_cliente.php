@@ -4,11 +4,11 @@ namespace candyucab;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Presupuesto extends Model
+class Punto_cliente extends Model
 {
 
   /*la tabla a la que vamos a hacer referencia*/
-  protected $table = 'presupuesto';
+  protected $table = 'punto_cliente';
 
   /*la clave de la tabla*/
   protected $primaryKey = 'codigo';
@@ -19,13 +19,11 @@ class Presupuesto extends Model
   /*ahora, especificiar cuales campos queremos modificar de la tabla*/
   protected $fillable = [
   'codigo',
-  'total',
-  'fecha',
+  'adquirido',
+  'valor',
   'fk_juridico',
   'fk_naturale',
-  'fk_tienda',
-  'fk_tienda_compra',
-  'fk_usuario'
+  'fk_punto'
   ];
 
   /*y cuales no*/

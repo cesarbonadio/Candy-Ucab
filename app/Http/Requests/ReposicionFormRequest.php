@@ -4,7 +4,7 @@ namespace candyucab\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PedidoFormRequest extends FormRequest
+class ReposicionFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class PedidoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'fk_medio_pago'=>'nullable|int',
-            'monto'=>'required|numeric',
-            'tipo_pago' => 'required|string'
+            'c_estatus'=>'required|integer|exists:estatus,codigo'
         ];
     }
-    
 }

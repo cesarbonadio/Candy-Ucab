@@ -12,7 +12,6 @@ class ReportesController extends Controller
 {
 
 
-          //
         public function __construct(){
 
         }
@@ -122,6 +121,60 @@ class ReportesController extends Controller
 
 
 
+        public function tienda_ingresos_egresos(){
+
+          $ingresos = DB::select('select t.codigo, t.nombre, sum(p.total) as total
+                                 from tienda t, presupuesto p
+                                 where p.fk_tienda = t.codigo
+                                 group by t.codigo, t.nombre
+
+                                 ');
+
+          $egresos = DB::select('select t.codigo, t.nombre, sum(p.total) as total
+                                from tienda t, presupuesto p
+                                where p.fk_tienda_compra = t.codigo
+                                group by t.codigo, t.nombre
+                                ');
+
+          return view ("reporte.tienda_ingresos_egresos",["ingreso"=>$ingresos,"egreso"=>$egresos]);
+
+        }
+
+
+
+        public function top_producto_tienda(){
+
+          $productos = DB::select('select max(x.total) as cantidad_vendida ,  x.tienda_nombre, x.nombre_producto
+
+                                    from (SELECT pro.nombre as nombre_producto, sum(propre.cantidad) as total, t.nombre as tienda_nombre
+                                    FROM producto_presupuesto propre, producto pro, presupuesto pre, tienda t where propre.c_producto = pro.codigo
+                                    and pre.codigo = propre.c_presupuesto
+                                    and pre.fk_tienda_compra = t.codigo
+                                    group by t.nombre,propre.c_producto,pro.nombre
+                                    order by sum(propre.cantidad) desc) x
+
+                                    group by x.tienda_nombre
+                                   ');
+
+          return view ("reporte.top_producto_tienda",["producto"=>$productos]);
+        }
+
+
+
+        public function top_retraso_estatus(){
+
+          $estatus = DB::select(' select count(ps.codigo) as total, ps.c_estatus, e.descripcion
+                                  from pedido_estatus as ps, estatus as e
+                                  where ps.c_estatus = e.codigo
+                                  group by ps.c_estatus
+                                  order by count(ps.codigo) desc
+                                  limit 1
+                                   ');
+
+          return view ("reporte.top_retraso_estatus",["estatus"=>$estatus]);
+        }
+
+
 
 
         public function empleados() {
@@ -161,7 +214,10 @@ class ReportesController extends Controller
 
           return view ("reporte.empleado",["empleado"=>$empleados/*,"retardo"=>$retardos*/]);
         }
+  
+  
        public function metodo(){
+
 
           $metodo = DB::select('select m.marca_tarjeta as marca, count(p.fk_medio_pago) as veces_usado
                                      from medio_pago m, pago p
@@ -210,6 +266,7 @@ class ReportesController extends Controller
           return view ("reporte.top5Clientes",["top5Clientes"=>$top5Clientes]);
 
         }
+
 
 
 }

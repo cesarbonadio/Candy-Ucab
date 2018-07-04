@@ -118,7 +118,7 @@
               <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-circle-o"></i> Almacén</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Anaqueles</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Pedidos</a></li>
+                <li><a href="../../../inventario/reposicion"><i class="fa fa-circle-o"></i>Reposiciones</a></li>
               </ul>
             </li>
 

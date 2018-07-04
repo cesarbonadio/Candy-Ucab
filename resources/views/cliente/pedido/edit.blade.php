@@ -47,9 +47,17 @@
    <div class = "col-lg-6 col-sm-6 col-md-6 col-xs-12">
      <div class="form-group">
       <label for ="monto">Monto a pagar</label>
-      <input type ="text" name="monto" class="form-control" placeholder="Monto...">
+      <input type ="text" name="monto" class="form-control" placeholder="Monto..." autocomplete="off">
      </div>
    </div>
+
+
+	 <div class = "col-lg-6 col-sm-6 col-md-6 col-xs-12">
+		 <div class="form-group">
+			<label for ="tipo_pago">tipo</label>
+			<input type ="text" name="tipo_pago" class="form-control" value = "medios" readonly>
+		 </div>
+	 </div>
 
 
      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

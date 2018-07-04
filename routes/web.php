@@ -29,6 +29,7 @@ Route::get('reporte/empleado','ReportesController@empleados');
 Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
 Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
 Route::get('reporte/factura','ReportesController@factura');
+
 Route::get('reporte/metodo','ReportesController@metodo');//nuevo
 Route::get('reporte/productoGeneral','ReportesController@productoGeneral');//nuevo
 Route::get('reporte/productoPorTienda','ReportesController@productoPorTienda');//nuevo
@@ -38,13 +39,24 @@ Route::get('reporte/top5Clientes','ReportesController@top5Clientes');//nuevo
 
 
 
+Route::get('reporte/tienda_ingresos_egresos','ReportesController@tienda_ingresos_egresos');
+Route::get('reporte/top_producto_tienda','ReportesController@top_producto_tienda');
+Route::get('reporte/top_retraso_estatus','ReportesController@top_retraso_estatus');
 
 
-Route::resource('cliente/pedido','PedidoController');
 
 /*Para el aplicativo como tal*/
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
+
+/*para las reposiciones de la fabrica (todavia no las hace automaticamente)*/
+Route::resource('inventario/reposicion','ReposicionController');
+
+
+Route::get('cliente/pedido/{codigo}/pagar_punto','PedidoController@pagar_punto');
+Route::resource('cliente/pedido','PedidoController');
+
+
 Route::resource('cliente/natural','NaturalController');
 Route::resource('cliente/juridico','JuridicoController');
 Route::resource('usuario/index','uProductoController');

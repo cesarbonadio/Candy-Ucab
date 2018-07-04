@@ -90,6 +90,31 @@
 
 
 
+				<tr>
+          			<td> <h4> Metodo de pago mas usado &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/metodo"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+				<tr>
+          			<td> <h4> Producto mas vendido &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/productoGeneral"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+				<tr>
+          			<td> <h4> Producto mas vendido por tienda &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/productoPorTienda"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+				<tr>
+          			<td> <h4> Top 5 mejores clientes &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/top5Clientes"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
 		</div>
 	</div>
 </div>

@@ -147,7 +147,20 @@
                 <li><a href="../nomina/asistencia"><i class="fa fa-circle-o"></i>Asistencia</a></li>
               </ul>
             </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-folder"></i>
+                <span>Usuarios y permisos</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/gestion/usuario"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+                <li><a href="/gestion/rol"><i class="fa fa-circle-o"></i>Roles</a></li>
+                <li><a href="/gestion/privilegio"><i class="fa fa-circle-o"></i>Privilegios</a></li>
+                <li><a href="/gestion/rolprivilegio"><i class="fa fa-circle-o"></i>Privilegios de cada rol</a></li>
 
+              </ul>
+            </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th-list"></i>
@@ -155,8 +168,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Diario</a></li>
+                <li><a href="../../../promocion/diario"><i class="fa fa-circle-o"></i>Diario</a></li>
                 <li><a href="../../../promocion/descuento"><i class="fa fa-circle-o"></i>Descuentos</a></li>
+                <li><a href="../../../promocion/diario_descuento"><i class="fa fa-circle-o"></i>Descuentos del diario</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Top - 10</a></li>
               </ul>
             </li>

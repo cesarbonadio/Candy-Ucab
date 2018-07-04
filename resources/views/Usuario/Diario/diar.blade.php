@@ -17,11 +17,14 @@
    											<div class="col-sm-6">
    												<h5 style="text-transform: uppercase; text-align: justify; margin-top: 20px; margin-left: -5px; float: left;">{{$descuento[0]->descripcion}}</h5>
    											</div>
+                        <?php if(isset($descuento[1]->descripcion)){ ?> 
    											<div class="col-sm-6">
    												<h5 style="text-transform: uppercase; text-align: justify; margin-top: 20px; margin-left: -5px; margin-bottom: 20px; float: left;">{{$descuento[1]->descripcion}}</h5>
    											</div>
-  
+                        <<?php } ?>
                                             @foreach($producto as $pro)
+                                            <?php if(isset($descuento[$cont]->descripcion)){ ?> 
+
                                             <br/>
                                             <div class="col-sm-6 imagenMinimo">
                                             	<div class="col-sm-6">
@@ -64,7 +67,8 @@
                                             
                                             </div>
 
-                                          
+                                                                  <<?php } ?>
+
                                             @endforeach
                                             <br/>
                                         </div>

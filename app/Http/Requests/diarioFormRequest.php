@@ -13,7 +13,7 @@ class diarioFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class diarioFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'descripcion'=>'required|max:600',
+            'fecha_emision'=>'required|date_format:Y-m-d H:i:s',
+            'fecha_vencimiento'=>'required|date_format:Y-m-d H:i:s'
         ];
     }
 }

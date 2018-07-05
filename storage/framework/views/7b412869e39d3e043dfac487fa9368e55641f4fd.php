@@ -3,7 +3,7 @@
 
 <div class ="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h2>Metodo de pago más usado &nbsp; &nbsp; <a href="../reporte"><button class="btn btn-success">Volver</button></a></h2>
+		<h2>Top 5 clientes &nbsp; &nbsp; <a href="../reporte"><button class="btn btn-success">Volver</button></a></h2>
 	</div>
 </div>
 
@@ -13,18 +13,24 @@
 			<table class="table table-stripped table-bordered table-condensed table-hover">
 
         <thead>
-       	  <th><h3>Tienda</h3></th>
-          <th><h3>Nombre del producto</h3></th>
-          <th><h3>Veces comprado</h3></th>
+       	  <th><h3>Suma de compras</h3></th>
+          <th><h3>Cedula/Rif</h3></th>
+          <th><h3>Nombre</h3></th>
+					<th><h3>Apellido/D.social</h3></th>
+          <th><h3>Hasta</h3></th>
         </thead>
-         	<?php $__currentLoopData = $productoPorTienda; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ppt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+         	<?php $__currentLoopData = $top5Clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ppt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
          <tr>
-            <td> <h4 style="text-transform: capitalize;">  <?php echo e($ppt->tnombre); ?>  </h4></td>
-            <td> <h4 style="text-transform: capitalize;">  <?php echo e($ppt->pronombre); ?>  </h4></td>
-            <td> <h4>  <?php echo e($ppt->veces_comprado); ?>  </h4></td>
+            <td> <h4 style="text-transform: capitalize;">  <?php echo e($ppt->suma); ?>  </h4></td>
+            <td> <h4 style="text-transform: capitalize;">  <?php echo e($ppt->idcliente); ?>  </h4></td>
+            <td> <h4>  <?php echo e($ppt->nombre); ?>  </h4></td>
+						<td> <h4>  <?php echo e($ppt->apellido); ?>  </h4></td>
+						<td> <h4>  <?php echo e($ppt->hasta); ?>  </h4></td>
          </tr>
          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
 		</div>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 
 <div class ="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h2>Metodo de pago más usado &nbsp; &nbsp; <a href="../reporte"><button class="btn btn-success">Volver</button></a></h2>
+		<h2>Producto más vendido &nbsp; &nbsp; <a href="../reporte"><button class="btn btn-success">Volver</button></a></h2>
 	</div>
 </div>
 

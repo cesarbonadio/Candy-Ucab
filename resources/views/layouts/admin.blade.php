@@ -171,7 +171,6 @@
                 <li><a href="../../../promocion/diario"><i class="fa fa-circle-o"></i>Diario</a></li>
                 <li><a href="../../../promocion/descuento"><i class="fa fa-circle-o"></i>Descuentos</a></li>
                 <li><a href="../../../promocion/diario_descuento"><i class="fa fa-circle-o"></i>Descuentos del diario</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Top - 10</a></li>
               </ul>
             </li>
              <li>

@@ -106,6 +106,9 @@ public function __construct(){/**/}
           $pedido->c_presupuesto = $presupuesto->codigo;
           $pedido->save();
 
+          $punto_cliente->fk_pedido = $pedido->codigo;
+          $punto_cliente->save();
+
           $presupuesto->total= $acumulado;
           $presupuesto->save();
           return Redirect::to('cliente/presupuesto');

@@ -118,7 +118,7 @@ class PedidoController extends Controller {
 
            // con el request valido si se trata de un pago con puntos o no
            if ($request->get('tipo_pago')=='puntos') {
-
+             
              $Punto_cliente = new Punto_cliente;
 
              $valor_actual = $this->encontrar_valor_actual();
@@ -135,9 +135,9 @@ class PedidoController extends Controller {
              $Punto_cliente->adquirido = -1*($request->get('monto')/$valor_actual[0]->valor);
              $Punto_cliente->fk_punto = $valor_actual[0]->codigo;
              $Punto_cliente->valor = $valor_actual[0]->valor;
+             $Punto_cliente->fk_pedido = $codigo;
 
              $Punto_cliente->save();
-
 
              $pedido = Pedido::findOrFail($codigo);
              $presupuesto = Presupuesto::findOrFail($pedido->c_presupuesto);

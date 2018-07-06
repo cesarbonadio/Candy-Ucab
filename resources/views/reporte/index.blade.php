@@ -110,8 +110,10 @@
 				</tr>
 				<tr>
           			<td> <h4> Top 5 mejores clientes &nbsp; &nbsp; </h4> </td>
-					<td>
-						  <a href="reporte/top5Clientes"><button class="btn btn-info">Ver</button></a></h4>
+          			
+          				<td>
+						  <a href="reporte/top5Clientespr"><button class="btn btn-info">Ver</button></a></h4>
+
 					</td>
 				</tr>
 

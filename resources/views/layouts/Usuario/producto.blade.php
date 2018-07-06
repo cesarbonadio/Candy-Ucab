@@ -14,7 +14,7 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-    <<?php 
+    <?php 
     session_start();     
 ?>
 

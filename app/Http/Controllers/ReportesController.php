@@ -254,16 +254,41 @@ class ReportesController extends Controller
           return view ("reporte.productoPorTienda",["productoPorTienda"=>$productoPorTienda]);
 
         }
+
+        public function top5Clientespr(){
+
+          return view ("reporte.top5Clientesprev");
+
+        }
         public function top5Clientes(){
 
-          $top5Clientes  = DB::select('select p.nombre as pronombre, sum(pp.cantidad) as veces_comprado, t.nombre as tnombre
-                                     from producto p, producto_presupuesto pp, tienda t, presupuesto pr
-                                     where pp.c_producto = p.codigo and pp.c_presupuesto = pr.codigo and pr.fk_tienda_compra = t.codigo
-                                     group by t.nombre, p.nombre
-                                     order by sum(pp.cantidad) desc
-                                    ');
+          /*$top5Clientes  = DB::select('select p.*, sum(p.total) as totale, n.nombre as nombre from presupuesto p, naturale as n where p.fk_tienda is null and n.cedula = p.fk_naturale
+          union select pp.*, sum(pp.total) as totale, j.d_social as nombre from presupuesto pp, juridico as j where pp.fk_tienda is null and j.rif = pp.fk_juridico order by totale
+            ');
+*/
+            if(isset($_GET["fechaini"]))
+        {
+            $fechaini = $_GET["fechaini"];
+            $fechafin = $_GET["fechafin"];
 
-          return view ("reporte.top5Clientes",["top5Clientes"=>$top5Clientes]);
+        }
+            $variable = DB::select('select sum(pre.total) as suma, n.cedula as idcliente , n.nombre as nombre, n.apellido as apellido
+        from presupuesto pre, naturale n
+        where
+         pre.fk_naturale = n.cedula
+         group by n.cedula
+
+          union
+
+         select sum(pre.total) as suma, j.rif as idcliente , j.d_social as nombre, j.r_social as apellido
+         from presupuesto pre, juridico j
+          where 
+           pre.fk_juridico = j.rif 
+           and pre.fecha between "'.$fechaini.'" and "'.$fechafin.'"
+         group by j.rif
+
+           order by suma desc limit 5');
+          return view ("reporte.top5Clientes",["top5Clientes"=>$variable]);
 
         }
 

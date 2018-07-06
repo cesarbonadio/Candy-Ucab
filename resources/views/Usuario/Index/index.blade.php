@@ -39,7 +39,9 @@
                                                     <i class="fas fa-star fa-stack-1x"></i>
                                                     <i class="fas fa-star-half fa-stack-1x"></i>
                                                 </span>
-                                                <button class="btn botonAddToCart">ADD TO CART</button>
+
+                                                <a href="/usuario/addToCart?id={{$pro->codigo}}"><button style="margin-left:20px;margin-top:20px" class="btn botonAddToCart" type="submit">ADD TO CART</button></a>
+
 
                                             </div>
                                             @endif
@@ -87,7 +89,7 @@
                                                     <i class="fas fa-star fa-stack-1x"></i>
                                                     <i class="fas fa-star-half fa-stack-1x"></i>
                                                 </span>
-                                                <button class="btn botonAddToCart">ADD TO CART</button>
+                                                                                                <a href="/usuario/addToCart?id={{$pro->codigo}}"><button style="margin-left:20px;margin-top:20px" class="btn botonAddToCart" type="submit">ADD TO CART</button></a>
 
                                             </div>
                                             @endif
@@ -130,7 +132,9 @@
                                                     <i class="fas fa-star fa-stack-1x"></i>
                                                     <i class="fas fa-star-half fa-stack-1x"></i>
                                                 </span>
-                                                <button class="btn botonAddToCart">ADD TO CART</button>
+                                                                                            <a href="/usuario/addToCart?id={{$pro->codigo}}"><button style="margin-left:20px;margin-top:20px" class="btn botonAddToCart" type="submit">ADD TO CART</button></a>
+
+
 
                                             </div>
                                             @endif

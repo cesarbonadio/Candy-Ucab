@@ -21,7 +21,7 @@
    											<div class="col-sm-6">
    												<h5 style="text-transform: uppercase; text-align: justify; margin-top: 20px; margin-left: -5px; margin-bottom: 20px; float: left;">{{$descuento[1]->descripcion}}</h5>
    											</div>
-                        <<?php } ?>
+                        <?php } ?>
                                             @foreach($producto as $pro)
                                             <?php if(isset($descuento[$cont]->descripcion)){ ?> 
 
@@ -58,7 +58,7 @@
                                                     <i class="fas fa-star fa-stack-1x"></i>
                                                     <i class="fas fa-star-half fa-stack-1x"></i>
                                                 </span>
-                                                <button class="btn botonAddToCart">ADD TO CART</button>
+                                                <a href="/usuario/addToCart?id={{$pro->codigo}}"><button style="margin-left:20px;margin-top:20px" class="btn botonAddToCart" type="submit">ADD TO CART</button></a>
 
                                             	<h6 style="text-transform: uppercase; text-align: justify; margin-top: 20px; margin-left: -5px">{{$pro->descripcion}}</h6>
 
@@ -67,7 +67,7 @@
                                             
                                             </div>
 
-                                                                  <<?php } ?>
+                                                                  <?php } ?>
 
                                             @endforeach
                                             <br/>

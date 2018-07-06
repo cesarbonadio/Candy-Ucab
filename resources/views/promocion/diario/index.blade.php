@@ -22,7 +22,7 @@
 					<td>{{ $dia->codigo}}</td>
 					<td>{{ $dia->descripcion}}</td>
 					<td>{{ $dia->fecha_emision}}</td>
-					<td>{{ $dia->fecha_emision}}</td>
+					<td>{{ $dia->fecha_vencimiento}}</td>
 
 					<td>
 						<a href="{{URL::action('DiarioController@edit',$dia->codigo)}}"><button class="btn btn-info">Editar</button></a>

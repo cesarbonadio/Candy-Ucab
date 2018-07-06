@@ -1,0 +1,1 @@
+pagarTodo.blade.php

@@ -362,4 +362,33 @@ class ReportesController extends Controller
 
 
 
+        public function top_cliente_frecuente(Request $request) {
+
+          if ($request){
+          $query=trim($request ->get('searchText'));
+          $clientes=DB::select('select n.cedula as id, count(p.codigo) as compra, n.nombre as nombre, t.nombre as tienda
+                                  from presupuesto as p, naturale as n, tienda as t
+                                  where p.fk_naturale = n.cedula and p.fk_tienda_compra=t.codigo and fecha<"'.$query.'"
+                                  group by t.nombre,n.cedula
+
+                                  union
+
+                                  select j.rif as id, count(p.codigo) as compra, j.d_social as nombre, t.nombre as tienda
+                                  from presupuesto as p, juridico as j, tienda as t
+                                  where p.fk_juridico = j.rif and p.fk_tienda_compra=t.codigo and fecha<"'.$query.'"
+                                  group by t.nombre ,j.rif
+
+                                  order by compra desc
+                                  limit 10
+
+                                  ');
+
+                  }
+
+          return view ("reporte.clientes_frecuentes",["cliente"=>$clientes,"searchText"=>$query]);
+        
+}
+
+
+
 }

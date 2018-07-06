@@ -40,6 +40,7 @@ Route::get('reporte/balance_puntos_tienda_lugar','ReportesController@balance_pun
 Route::get('reporte/tienda_pago_puntos','ReportesController@tienda_pago_puntos');
 Route::get('reporte/ranking_producto_tienda_lugar','ReportesController@ranking_producto_tienda_lugar');
 Route::get('reporte/top10compra','ReportesController@top_cliente_compra');
+Route::get('reporte/clientes_frecuentes','ReportesController@top_cliente_frecuente');
 
 
 /*Para el aplicativo como tal*/

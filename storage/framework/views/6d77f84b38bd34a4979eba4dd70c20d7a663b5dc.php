@@ -1,5 +1,4 @@
-@extends ('layouts.admin')
-@section ('contenido')
+<?php $__env->startSection('contenido'); ?>
 
 <div class ="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -152,4 +151,6 @@
 		</div>
 	</div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

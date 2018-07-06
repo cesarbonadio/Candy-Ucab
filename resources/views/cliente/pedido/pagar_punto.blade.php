@@ -1,9 +1,16 @@
 @extends ('layouts.admin')
 @section ('contenido')
 
+
+
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		<h3>Pagar con puntos</h3><br>
+
+		@if (($cantidad[0]->total == 0))
+		<h4>Este cliente no tiene puntos <button class="btn btn-success" type="reset"><a href="../../pedido" style="color: inherit;">volver</a></button></h4>
+		@else
+
     <h4>Cantidad de puntos del cliente : {{$cantidad[0]->cantidad}}</h4>
     <h4>Tiene: {{$cantidad[0]->total}} Bs en puntos</h4>
     <br>
@@ -55,6 +62,6 @@
 
 {!!Form::close()!!}
 
-
+@endif
 
 @stop

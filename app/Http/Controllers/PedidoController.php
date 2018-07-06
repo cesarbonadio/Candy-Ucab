@@ -118,17 +118,17 @@ class PedidoController extends Controller {
 
            // con el request valido si se trata de un pago con puntos o no
            if ($request->get('tipo_pago')=='puntos') {
-             
+
              $Punto_cliente = new Punto_cliente;
 
              $valor_actual = $this->encontrar_valor_actual();
              $cedula = $this->encontrar_cedula_natural($codigo);
              $rif = $this->encontrar_rif_juridico($codigo);
 
-             if ($cedula[0]->id){
+             if ($cedula){
                $Punto_cliente->fk_naturale = $cedula[0]->id;
              }
-             else if ($rif[0]->id){
+             else if ($rif){
                $Punto_cliente->fk_juridico = $rif[0]->id;
              }
 

@@ -46,6 +46,22 @@ class ReposicionController extends Controller
          }
 
 
+         public function reponer_por_pedido($codigoPedido){
+
+            $pedido = DB::select(' select pro.codigo codigo_producto , t.codigo codigo_tienda
+                                   from pedido_estatus ps, pedido p, presupuesto pre, producto_presupuesto pp, tienda t, producto pro
+                                   where ps.c_estatus = 400
+                                   and ps.c_pedido = p.codigo
+                                   and p.c_presupuesto = pre.codigo
+                                   and pp.c_presupuesto = pre.codigo
+                                   and pre.fk_tienda = t.codigo
+                                   and pp.c_producto = pro.codigo
+                                   and p.codigo = ?
+                                   ',[$codigoPedido]);
+
+            DB::update('update inventario set cantidad = cantidad + 10000 where c_producto = ? and c_tienda = ?',[$pedido[0]->codigo_producto,$pedido[0]->codigo_tienda]);
+         }
+
 
 
          public function update(ReposicionFormRequest $request,$codigo) {
@@ -54,6 +70,11 @@ class ReposicionController extends Controller
            $pedido_estatus->c_pedido = $codigo;
            $pedido_estatus->c_estatus = $request->get('c_estatus');
            $pedido_estatus->save();
+
+           if ($request->get('c_estatus')==400){
+                $this->reponer_por_pedido($codigo);
+           }
+
            return Redirect::to('inventario/reposicion');
          }
 

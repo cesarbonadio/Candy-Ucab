@@ -1,8 +1,15 @@
 <?php $__env->startSection('contenido'); ?>
 
+
+
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		<h3>Pagar con puntos</h3><br>
+
+		<?php if(($cantidad[0]->cantidad == 0)): ?>
+		<h4>Este cliente no tiene puntos <button class="btn btn-success" type="reset"><a href="../../pedido" style="color: inherit;">volver</a></button></h4>
+		<?php else: ?>
+
     <h4>Cantidad de puntos del cliente : <?php echo e($cantidad[0]->cantidad); ?></h4>
     <h4>Tiene: <?php echo e($cantidad[0]->total); ?> Bs en puntos</h4>
     <br>
@@ -57,7 +64,7 @@
 <?php echo Form::close(); ?>
 
 
-
+<?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

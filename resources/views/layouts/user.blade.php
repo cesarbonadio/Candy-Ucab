@@ -13,39 +13,7 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="modal fade" data-keyboard="false" id="loginModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modalHeader">
-                                <h4 class="modal-title">Iniciar Sesion</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                            </div>
-                            <div class="modal-body modalBody">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="inputUserName">Usuario</label>
-                                        <input class="form-control modalForms" placeholder="Nombre de Usuario" type="text" id="inputUserName" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">Contraseña</label>
-                                        <input class="form-control modalForms" placeholder="Contraseña" type="password" id="inputPassword" />
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer modalFooter">
-                                <button class="btn modalButton">Iniciar Sesion</button>
-                                <button class="btn modalButton" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
      <div class="container">
         <div class="row">

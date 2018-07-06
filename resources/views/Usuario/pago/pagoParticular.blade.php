@@ -1,0 +1,1 @@
+pagoParticular.blade.php

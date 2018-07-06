@@ -31,24 +31,38 @@ public function _construct(){
         }
       }
 
+      public function index2(Request $request){
+
+        if($request){
+
+          $query=trim($request->get('searchText')); //obtener el searchText para filtrar productos
+          $usuario = DB::select('select * from usuario');
+          return view('usuario.perfil.perfil',["usuario"=>$usuario]);
+        }
+      }
+
       public function store (LoginFormRequest $request) {
             $usuario = DB::select('select * from usuario where username = "'.$request->get('username').'" and "'.$request->get('password').'" = password');
               if(!empty($usuario)){
               session_start();
               $_SESSION['ini'] = 1;
-              $_SESSION['id'] = $usuario[0]->fk_empleado;
+              $_SESSION['id']= $usuario[0]->id;
               $_SESSION['username'] = $usuario[0]->username;
               $_SESSION['password'] = $usuario[0]->password;
               $_SESSION['puntos'] = $usuario[0]->puntos;  
               $_SESSION['rol'] = $usuario[0]->fk_rol;  
-              if(!is_null($usuario[0]->fk_juridico)){
-                $_SESSION['datos_usu'] = $usuario[0]->fk_juridico;  
+              if($usuario[0]->fk_juridico != NULL){
+                $_SESSION['datos_usu'] = $usuario[0]->fk_juridico; 
+                $_SESSION['tipo']= 'juridico';
               }
-              else if(!is_null($usuario[0]->fk_naturale)){
-                $_SESSION['datos_usu'] = $usuario[0]->fk_juridico;  
+              else if($usuario[0]->fk_naturale != NULL){
+                $_SESSION['datos_usu'] = $usuario[0]->fk_naturale;  
+                $_SESSION['tipo']= 'natural';
               }
               else{
                 $_SESSION['datos_usu'] = $usuario[0]->fk_empleado;
+                $_SESSION['tipo']= 'empleado';
+
               }
               return Redirect::to('usuario/index');
 
@@ -73,6 +87,8 @@ public function _construct(){
               $_SESSION['puntos'] = 0;  
               $_SESSION['rol'] = 3;  
               $_SESSION['datos_usu'] = NULL;
+              $_SESSION['tipo']= NULL;
+
 
 
               return Redirect::to('usuario/index');

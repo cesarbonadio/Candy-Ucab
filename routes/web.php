@@ -29,10 +29,16 @@ Route::get('reporte/empleado','ReportesController@empleados');
 Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
 Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
 Route::get('reporte/factura','ReportesController@factura');
-Route::get('reporte/metodo','ReportesController@metodo');//nuevo
-Route::get('reporte/productoGeneral','ReportesController@productoGeneral');//nuevo
-Route::get('reporte/productoPorTienda','ReportesController@productoPorTienda');//nuevo
-Route::get('reporte/top5Clientes','ReportesController@top5Clientes');//nuevo
+
+
+Route::get('reporte/metodo','ReportesController@metodo');
+Route::get('reporte/productoGeneral','ReportesController@productoGeneral');
+Route::get('reporte/productoPorTienda','ReportesController@productoPorTienda');
+Route::get('reporte/top5Clientespr','ReportesController@top5Clientespr');
+Route::get('reporte/top5Clientes','ReportesController@top5Clientes');
+
+
+
 Route::get('reporte/tienda_ingresos_egresos','ReportesController@tienda_ingresos_egresos');
 Route::get('reporte/top_producto_tienda','ReportesController@top_producto_tienda');
 Route::get('reporte/top_retraso_estatus','ReportesController@top_retraso_estatus');
@@ -82,10 +88,23 @@ Route::post('postimport','AsistenciaController@postimport')->name('asistencia.im
 Route::resource('usuario/diario','uDiarioController');
 Route::get('usuario/producto','uProductoController@productoIndex');
 
-Route::resource('usuario/iniciar','uUsuarioController');//nuevo
-Route::get('usuario/cerrar','uUsuarioController@indexCerrar');//nuevo
-Route::resource('promocion/diario','DiarioController');//nuevo
-Route::resource('promocion/diario_descuento','Diario_DescuentoController');//nuevo
-Route::resource('gestion/privilegio','PrivilegioController');//nuevo
-Route::resource('gestion/rol','RolController');//nuevo
-Route::resource('gestion/rolprivilegio','RolPrivilegioController');//nuevo
+
+Route::resource('usuario/iniciar','uUsuarioController');
+Route::get('usuario/cerrar','uUsuarioController@indexCerrar');
+Route::resource('promocion/diario','DiarioController');
+Route::resource('promocion/diario_descuento','Diario_DescuentoController');
+Route::resource('gestion/privilegio','PrivilegioController');
+Route::resource('gestion/rol','RolController');
+Route::resource('gestion/rolprivilegio','RolPrivilegioController');
+
+
+Route::resource('usuario/carrito','CarritoController');//nuevo
+Route::get('usuario/pagarTodo','CarritoController@pagarTodo');//nuevo
+Route::get('usuario/pago','CarritoController@pagoParticular');//nuevo
+Route::get('/usuario/addToCart', 'CarritoController@indexConfirmacion');//nuevo
+Route::post('/usuario/addToCart', 'CarritoController@store');//nuevo
+Route::get('/usuario/perfil', 'uUsuarioController@index2');//nuevo
+Route::resource('/gestion/usuario','UsuarioController');
+
+
+

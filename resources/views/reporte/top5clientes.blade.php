@@ -14,20 +14,19 @@
 			<table class="table table-stripped table-bordered table-condensed table-hover">
 
         <thead>
-       	  <th><h3>Suma de compras</h3></th>
+
+       	  <th><h3>Cantidad comprado</h3></th>
           <th><h3>Cedula/Rif</h3></th>
-          <th><h3>Nombre</h3></th>
-					<th><h3>Apellido/D.social</h3></th>
-          <th><h3>Hasta</h3></th>
+          <th><h3>Veces comprado</h3></th>
         </thead>
-         	@foreach($top5Clientes as $ppt)
+         	@foreach($top5Clientes as $t5)
 
          <tr>
-            <td> <h4 style="text-transform: capitalize;">  {{$ppt->suma}}  </h4></td>
-            <td> <h4 style="text-transform: capitalize;">  {{$ppt->idcliente}}  </h4></td>
-            <td> <h4>  {{$ppt->nombre}}  </h4></td>
-						<td> <h4>  {{$ppt->apellido}}  </h4></td>
-						<td> <h4>  {{$ppt->hasta}}  </h4></td>
+            <td> <h4 style="text-transform: capitalize;">  {{$t5->suma}}  </h4></td>
+            <td> <h4 style="text-transform: capitalize;">  {{$t5->idcliente}}  </h4></td>
+            <td> <h4 style="text-transform: capitalize;">  {{$t5->nombre}}  {{$t5->apellido}}</h4></td>
+
+
          </tr>
          @endforeach
 

@@ -234,29 +234,40 @@ class ReportesController extends Controller
 
         }
 
+        public function top5Clientespr(){
 
+          return view ("reporte.top5Clientesprev");
+
+        }
         public function top5Clientes(){
 
-          $top5Clientes  = DB::select('select sum(pre.total) as suma, n.cedula as idcliente , n.nombre as nombre, n.apellido as apellido, pe.fecha as hasta
-                                        from pago p, pedido pe , presupuesto pre, naturale n
-                                        where pe.codigo = p.fk_pedido
-                                        and pe.c_presupuesto = pre.codigo
-                                        and pre.fk_naturale = n.cedula
-                                        group by n.cedula
+          /*$top5Clientes  = DB::select('select p.*, sum(p.total) as totale, n.nombre as nombre from presupuesto p, naturale as n where p.fk_tienda is null and n.cedula = p.fk_naturale
+          union select pp.*, sum(pp.total) as totale, j.d_social as nombre from presupuesto pp, juridico as j where pp.fk_tienda is null and j.rif = pp.fk_juridico order by totale
+            ');
+*/
+            if(isset($_GET["fechaini"]))
+        {
+            $fechaini = $_GET["fechaini"];
+            $fechafin = $_GET["fechafin"];
 
-                                        union
+        }
+            $variable = DB::select('select sum(pre.total) as suma, n.cedula as idcliente , n.nombre as nombre, n.apellido as apellido
+        from presupuesto pre, naturale n
+        where
+         pre.fk_naturale = n.cedula
+         group by n.cedula
 
-                                        select sum(pre.total) as suma, j.rif as idcliente , j.d_social as nombre, j.r_social as apellido, pe.fecha as hasta
-                                        from pago p, pedido pe , presupuesto pre, juridico j
-                                        where pe.codigo = p.fk_pedido
-                                        and pe.c_presupuesto = pre.codigo
-                                        and pre.fk_juridico = j.rif
-                                        group by j.rif
+          union
 
-                                        order by suma desc
-                                        ');
+         select sum(pre.total) as suma, j.rif as idcliente , j.d_social as nombre, j.r_social as apellido
+         from presupuesto pre, juridico j
+          where 
+           pre.fk_juridico = j.rif 
+           and pre.fecha between "'.$fechaini.'" and "'.$fechafin.'"
+         group by j.rif
 
-          return view ("reporte.top5Clientes",["top5Clientes"=>$top5Clientes]);
+           order by suma desc limit 5');
+          return view ("reporte.top5Clientes",["top5Clientes"=>$variable]);
 
         }
 

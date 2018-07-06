@@ -15,8 +15,22 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-<<?php 
-    session_start();     
+<?php 
+    session_start();    
+    echo $_SESSION['ini'];
+ 
+    if (!isset($_SESSION['ini'])){
+
+            header("Location: /usuario/iniciar"); /* Redirect browser */
+            exit();
+        }
+        else{
+            if($_SESSION['ini']!=1){
+                header("Location: /usuario/iniciar"); /* Redirect browser */
+                exit();
+            }
+        }
+
 ?>
 
      <div class="container">
@@ -58,7 +72,9 @@
                     <div class="col-sm-5 offset-7" style="min-height:inherit">
                         <div class="float-right">
                             <div class="btn-group float-right" style="min-height:inherit">
+                                <?php if($_SESSION['rol']!=3){?>
                                 <a href="/administrar/producto" class="btn modalButton">Administrar sitio</a>
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -67,7 +83,6 @@
             </div>
         </div>
     </div><!--Dirige a la parte administrativa-->
-
     <div class="customContainerSearch">
         <div class=" fixedContainer">
             <div class="container" style="min-height:inherit">
@@ -91,12 +106,12 @@
                             </div>
                             <div class="btn" style="min-height:inherit">
 
-                                <a href="/perfil.html" class="btn font-weight-bold botonIniciada" style="border-radius: 50%;margin-top:-25px; background-color: #FF4876;padding:0 2.5px 0 2.5px;"><i class="fa fa-user-circle fa-2x"></i></a>
+                                <a href="/usuario/perfil" class="btn font-weight-bold botonIniciada" style="border-radius: 50%;margin-top:-25px; background-color: #FF4876;padding:0 2.5px 0 2.5px;"><i class="fa fa-user-circle fa-2x"></i></a>
 
                             </div>
        
                             <div class="btn-group float-right" style="min-height:inherit">
-                            <a href="#" class="btn font-weight-bold botonSesionIniciada botonIniciada ">Carrito <i class="fa fa-shopping-cart fa-md float-right"></i></a>  
+                            <a href="/usuario/carrito" class="btn font-weight-bold botonSesionIniciada botonIniciada ">Carrito <i class="fa fa-shopping-cart fa-md float-right"></i></a>  
                             <a href="/usuario/cerrar" class="btn modalButton">Cerrar Sesion</a>
 
                         </div>
@@ -306,11 +321,7 @@
             </div>
         </div>
     </div>
-<?php
-echo "<h2>Your Input:</h2>";
-echo $_SESSION['username'];
 
-?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{asset('usuario/Bootstrap/js/bootstrap.min.js')}}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

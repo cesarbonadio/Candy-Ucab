@@ -13,9 +13,7 @@
     <title>Candy Ucab</title>
 </head>
 <body>
-<<?php 
-    session_start();     
-?>
+
      <div class="container">
         <div class="row">
             <div class="col-sm-12">

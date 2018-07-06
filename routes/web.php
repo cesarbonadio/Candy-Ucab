@@ -30,6 +30,7 @@ Route::get('reporte/ingrediente','ReportesController@ingrediente_productos');
 Route::get('reporte/tarjeta','ReportesController@tarjeta_credito');
 Route::get('reporte/factura','ReportesController@factura');
 
+
 Route::get('reporte/metodo','ReportesController@metodo');
 Route::get('reporte/productoGeneral','ReportesController@productoGeneral');
 Route::get('reporte/productoPorTienda','ReportesController@productoPorTienda');
@@ -38,12 +39,14 @@ Route::get('reporte/top5Clientes','ReportesController@top5Clientes');
 
 
 
-
-
-
 Route::get('reporte/tienda_ingresos_egresos','ReportesController@tienda_ingresos_egresos');
 Route::get('reporte/top_producto_tienda','ReportesController@top_producto_tienda');
 Route::get('reporte/top_retraso_estatus','ReportesController@top_retraso_estatus');
+Route::get('reporte/balance_puntos_tienda_lugar','ReportesController@balance_puntos_tienda_lugar');
+Route::get('reporte/tienda_pago_puntos','ReportesController@tienda_pago_puntos');
+Route::get('reporte/ranking_producto_tienda_lugar','ReportesController@ranking_producto_tienda_lugar');
+Route::get('reporte/top10compra','ReportesController@top_cliente_compra');
+Route::get('reporte/clientes_frecuentes','ReportesController@top_cliente_frecuente');
 
 
 
@@ -53,6 +56,7 @@ Route::resource('administrar/tienda','TiendaController');
 
 /*para las reposiciones de la fabrica (todavia no las hace automaticamente)*/
 Route::resource('inventario/reposicion','ReposicionController');
+Route::resource('inventario/alerta','AlertaController');
 
 
 Route::get('cliente/pedido/{codigo}/pagar_punto','PedidoController@pagar_punto');
@@ -84,6 +88,7 @@ Route::post('postimport','AsistenciaController@postimport')->name('asistencia.im
 Route::resource('usuario/diario','uDiarioController');
 Route::get('usuario/producto','uProductoController@productoIndex');
 
+
 Route::resource('usuario/iniciar','uUsuarioController');
 Route::get('usuario/cerrar','uUsuarioController@indexCerrar');
 Route::resource('promocion/diario','DiarioController');
@@ -100,4 +105,6 @@ Route::get('/usuario/addToCart', 'CarritoController@indexConfirmacion');//nuevo
 Route::post('/usuario/addToCart', 'CarritoController@store');//nuevo
 Route::get('/usuario/perfil', 'uUsuarioController@index2');//nuevo
 Route::resource('/gestion/usuario','UsuarioController');
+
+
 

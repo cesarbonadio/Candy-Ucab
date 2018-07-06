@@ -191,40 +191,19 @@ class ReportesController extends Controller
                                      group by a.c_empleado,e.cedula,e.nombre
                                    ');
 
-
-         /*$retardos = DB::select("select count(a.codigo) as horas
-                                   from asistencia as a, horario as h
-                                  , ( select sum(time_to_sec(TIME(a.hora_entrada)-TIME(h.hora_inicio))) as retardo
-                                        from asistencia as a, horario as h
-                                        where a.c_horario = h.clave
-                                        and retardo>=3600
-                                    )
-
-                                   where a.c_horario = h.clave
-
-                                   group by a.c_empleado
-                                   ");*/
-
-           /*$retardos = DB::select('Select a.c_empleado, 21-count(a.codigo) as dias_ausencia
-                                   ,sum(TIMESTAMPDIFF(HOUR, hora_inicio, hora_fin) - TIMESTAMPDIFF(HOUR, hora_entrada, hora_salida)) as horas_retraso
-                                     from asistencia a inner join horario h on a.c_horario=h.clave
-                                     where a.c_horario = 1
-                                     group by c_empleado
-                                   ');*/
-
-          return view ("reporte.empleado",["empleado"=>$empleados/*,"retardo"=>$retardos*/]);
+          return view ("reporte.empleado",["empleado"=>$empleados]);
         }
-  
-  
+
+
        public function metodo(){
 
 
-          $metodo = DB::select('select m.marca_tarjeta as marca, count(p.fk_medio_pago) as veces_usado
+          $metodo = DB::select('select m.tipo as tipo, count(p.fk_medio_pago) as veces_usado
                                      from medio_pago m, pago p
                                      where p.fk_medio_pago = m.codigo
-                                     group by m.marca_tarjeta
+                                     group by m.tipo
                                      order by count(p.fk_medio_pago) desc
-                                    ');
+                               ');
 
           return view ("reporte.metodo",["metodo"=>$metodo]);
 
@@ -291,6 +270,135 @@ class ReportesController extends Controller
           return view ("reporte.top5Clientes",["top5Clientes"=>$variable]);
 
         }
+
+
+        public function balance_puntos_tienda_lugar(){
+
+          $otorgados  = DB::select('select t.nombre as nombre_tienda , sum(pc.adquirido) as otorgado, l.nombre as nombre_lugar
+                                        from tienda as t, punto_cliente pc, pedido p, presupuesto pre, lugar l
+                                        where pc.fk_pedido = p.codigo
+                                        and p.c_presupuesto = pre.codigo
+                                        and pre.fk_tienda_compra = t.codigo
+                                        and pc.adquirido > 0.00
+                                        and t.fk_lugar = l.codigo
+                                        group by t.codigo
+                                    ');
+
+          $canjeados =   DB::select('select t.nombre as nombre_tienda , -1*(sum(pc.adquirido)) as canjeados, l.nombre as nombre_lugar
+                                        from tienda as t, punto_cliente pc, pedido p, presupuesto pre, lugar l
+                                        where pc.fk_pedido = p.codigo
+                                        and p.c_presupuesto = pre.codigo
+                                        and pre.fk_tienda_compra = t.codigo
+                                        and pc.adquirido < 0.00
+                                        and t.fk_lugar = l.codigo
+                                        group by t.codigo
+                                    ');
+
+          return view ("reporte.balance_puntos_tienda_lugar",["otorgados"=>$otorgados,"canjeados"=>$canjeados]);
+
+        }
+
+        public function tienda_pago_puntos(){
+
+          $tiendas  = DB::select('select t.nombre as nombre_tienda , -1*(sum(pc.adquirido)) as canjeados
+                                     from tienda as t, punto_cliente pc, pedido p, presupuesto pre, lugar  l
+                                        where pc.fk_pedido = p.codigo
+                                        and p.c_presupuesto = pre.codigo
+                                        and pre.fk_tienda_compra = t.codigo
+                                        and pc.adquirido < 0.00
+                                        and t.fk_lugar = l.codigo
+                                        group by t.codigo
+                                        order by -1*(sum(pc.adquirido)) desc
+                                    ');
+
+          return view ("reporte.tienda_pago_puntos",["tienda"=>$tiendas]);
+
+        }
+
+
+        public function ranking_producto_tienda_lugar(){
+
+          $tienda = DB::select('select max(x.total) as cantidad_vendida ,  x.tienda_nombre, x.nombre_producto
+
+                                    from (SELECT pro.nombre as nombre_producto, sum(propre.cantidad) as total, t.nombre as tienda_nombre
+                                    FROM producto_presupuesto propre, producto pro, presupuesto pre, tienda t where propre.c_producto = pro.codigo
+                                    and pre.codigo = propre.c_presupuesto
+                                    and pre.fk_tienda_compra = t.codigo
+                                    group by t.nombre,propre.c_producto,pro.nombre
+                                    order by sum(propre.cantidad) desc) x
+
+                                    group by x.tienda_nombre
+                                    order by max(x.total) desc');
+
+          $lugar = DB::select('select max(x.total) as cantidad_vendida , x.nombre_producto, x.lugar_nombre, x.lugar_codigo
+
+                                from (SELECT pro.nombre as nombre_producto, sum(propre.cantidad) as total, l.nombre as lugar_nombre, l.codigo as lugar_codigo
+                                FROM producto_presupuesto propre, producto pro, presupuesto pre, tienda t, lugar as l
+                                where propre.c_producto = pro.codigo
+                                and pre.codigo = propre.c_presupuesto
+                                and pre.fk_tienda_compra = t.codigo
+                                and t.fk_lugar = l.codigo
+                                group by l.codigo,propre.c_producto,pro.nombre
+                                order by sum(propre.cantidad) desc) x
+
+                                group by x.lugar_codigo
+                                order by max(x.total) desc');
+
+
+          return view ("reporte.ranking_producto_tienda_lugar",["tienda"=>$tienda,"lugar"=>$lugar]);
+        }
+
+
+
+       public function top_cliente_compra() {
+
+          $clientes = DB::select('select n.cedula as id, count(p.codigo) as suma, n.nombre as nombre
+                                  from presupuesto as p, naturale as n
+                                  where p.fk_naturale = n.cedula
+                                  group by n.cedula, n.nombre
+
+                                  union
+
+                                  select j.rif as id, count(p.codigo) as suma, j.d_social as nombre
+                                  from presupuesto as p, juridico as j
+                                  where p.fk_juridico = j.rif
+                                  group by j.rif, j.d_social
+
+                                  order by suma desc
+                                  limit 10
+                                  ');
+
+          return view ("reporte.top10compra",["cliente"=>$clientes]);
+        }
+
+
+
+        public function top_cliente_frecuente(Request $request) {
+
+          if ($request){
+          $query=trim($request ->get('searchText'));
+          $clientes=DB::select('select n.cedula as id, count(p.codigo) as compra, n.nombre as nombre, t.nombre as tienda
+                                  from presupuesto as p, naturale as n, tienda as t
+                                  where p.fk_naturale = n.cedula and p.fk_tienda_compra=t.codigo and fecha<"'.$query.'"
+                                  group by t.nombre,n.cedula
+
+                                  union
+
+                                  select j.rif as id, count(p.codigo) as compra, j.d_social as nombre, t.nombre as tienda
+                                  from presupuesto as p, juridico as j, tienda as t
+                                  where p.fk_juridico = j.rif and p.fk_tienda_compra=t.codigo and fecha<"'.$query.'"
+                                  group by t.nombre ,j.rif
+
+                                  order by compra desc
+                                  limit 10
+
+                                  ');
+
+                  }
+
+          return view ("reporte.clientes_frecuentes",["cliente"=>$clientes,"searchText"=>$query]);
+        
+}
 
 
 

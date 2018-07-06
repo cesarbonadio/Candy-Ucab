@@ -39,7 +39,7 @@ class PresupuestoFormRequest extends FormRequest
          'cantidad5'=>'nullable|numeric|required_with:producto5'
      ];
      if ($this->presupuesto){
-       $rules['tienda_descontar'] = 'nullable';
+       $rules['fk_tienda_compra'] = 'nullable';
        $rules['fk_juridico'] = 'nullable';
        $rules['fk_naturale'] = 'nullable';
      }

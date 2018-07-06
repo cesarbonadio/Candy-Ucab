@@ -80,6 +80,13 @@
 					</td>
 				</tr>
 
+				<tr>
+					<td> <h4> Listado de 10 Clientes Frecuentes por Tienda &nbsp; &nbsp; </h4> </td>
+					<td>
+							<a href="reporte/clientes_frecuentes"><button class="btn btn-info">Ver</button></a></h4>
+					</td>
+				</tr>
+
 
 				<tr>
 					<td> <h4> Estatus que genera mas retraso en los pedidos &nbsp; &nbsp; </h4> </td>
@@ -91,7 +98,7 @@
 
 
 				<tr>
-          			<td> <h4> Metodo de pago mas usado &nbsp; &nbsp; </h4> </td>
+          			<td> <h4> Metodo de pago mas usado en tiendas fisicas &nbsp; &nbsp; </h4> </td>
 					<td>
 						  <a href="reporte/metodo"><button class="btn btn-info">Ver</button></a></h4>
 					</td>
@@ -109,13 +116,46 @@
 					</td>
 				</tr>
 				<tr>
+
           			<td> <h4> Top 5 mejores clientes &nbsp; &nbsp; </h4> </td>
           			
           				<td>
 						  <a href="reporte/top5Clientespr"><button class="btn btn-info">Ver</button></a></h4>
 
+
+          			<td> <h4> Top 5 mejores clientes segun monto de compras por tiempo &nbsp; &nbsp; </h4> </td>
+					<td>
+						  <a href="reporte/top5Clientes"><button class="btn btn-info">Ver</button></a></h4>
+
 					</td>
 				</tr>
+
+
+							<td> <h4> Puntos otorgados y canjeados por tienda y lugar &nbsp; &nbsp; </h4> </td>
+				<td>
+						<a href="reporte/balance_puntos_tienda_lugar"><button class="btn btn-info">Ver</button></a></h4>
+				</td>
+			</tr>
+
+
+			<td> <h4> Las tiendas que más recibieron pagos con puntos &nbsp; &nbsp; </h4> </td>
+			<td>
+			<a href="reporte/tienda_pago_puntos"><button class="btn btn-info">Ver</button></a></h4>
+			</td>
+			</tr>
+
+			<td> <h4> Ranking productos por tienda y lugar &nbsp; &nbsp; </h4> </td>
+ 		 <td>
+ 		 <a href="reporte/ranking_producto_tienda_lugar"><button class="btn btn-info">Ver</button></a></h4>
+ 		 </td>
+ 		 </tr>
+
+
+			<td> <h4>Lista de los 10 clientes con mayor cantidad de Compras &nbsp; &nbsp; </h4> </td>
+			<td>
+				  <a href="reporte/top10compra"><button class="btn btn-info">Ver</button></a></h4>
+			</td>
+		</tr>
 
 		</div>
 	</div>

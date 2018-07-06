@@ -10,6 +10,8 @@ use candyucab\Producto_presupuesto;
 use candyucab\Producto;
 use candyucab\Pedido;
 use candyucab\Punto_cliente;
+use candyucab\Inventario;
+use candyucab\Pedido_estatus;
 use Illuminate\Support\Facades\Redirect;
 use candyucab\Http\Requests\PresupuestoFormRequest;
 use DB;
@@ -64,6 +66,77 @@ public function __construct(){/**/}
       }
 
 
+
+      public function descontar_tienda($codigoTienda,$codigoProducto,$cantidadDescontar){
+        DB::update('update inventario set cantidad = cantidad - ?
+                    where c_tienda = ? and c_producto = ?',
+                    [$cantidadDescontar,$codigoTienda,$codigoProducto]);
+      }
+
+
+
+      public function obtener_inventario($codigoTienda,$codigoProducto){
+        $inventario = DB::select('select cantidad from inventario
+                                  where c_tienda = ?
+                                  and c_producto = ?',[$codigoTienda,$codigoProducto]);
+        return $inventario[0]->cantidad;
+      }
+
+
+
+
+      public function existe_reposicion_pendiente($codigoTienda,$codigoProducto){
+
+        $pendiente = DB::select('select p.codigo, pro.codigo from
+                                pedido p, presupuesto pre, producto pro, producto_presupuesto pp, pedido_estatus ps
+                                where pre.fk_tienda = ?
+                                and p.c_presupuesto = pre.codigo
+                                and pp.c_producto = ?
+                                and pp.c_presupuesto = pre.codigo
+                                and ps.c_pedido = p.codigo
+                                and ps.c_estatus != 400
+                                and ps.c_estatus = 100
+                                group by p.codigo
+                                ',[$codigoTienda,$codigoProducto]);
+
+        if (empty($pediente[0])) return false;
+        else return true;
+      }
+
+
+
+
+      public function reponer_inventario($codigoTienda,$codigoProducto){
+        $presupuesto = new Presupuesto;
+        $presupuesto->fecha = date('Y-m-d H:i:s');
+        $presupuesto->fk_tienda = $codigoTienda;
+        $presupuesto->save();
+
+        $producto = Producto::findOrFail($codigoProducto);
+        $producto_presupuesto = new Producto_presupuesto;
+        $producto_presupuesto->cantidad = 10000;
+        $producto_presupuesto->precio = $producto->precio;
+        $producto_presupuesto->c_producto = $producto->codigo;
+        $producto_presupuesto->c_presupuesto = $presupuesto->codigo;
+        $producto_presupuesto->save();
+
+        $presupuesto->total = 10000 * $producto->precio;
+        $presupuesto->save();
+
+        $pedido = new Pedido;
+        $pedido->fecha = date('Y-m-d H:i:s');
+        $pedido->c_presupuesto = $presupuesto->codigo;
+        $pedido->save();
+
+        $pedido_estatus = new Pedido_estatus;
+        $pedido_estatus->c_estatus = 100;
+        $pedido_estatus->c_pedido = $pedido->codigo;
+        $pedido_estatus->cambio = date('Y-m-d H:i:s');
+        $pedido_estatus->save();
+      }
+
+
+
       public function store(PresupuestoFormRequest $request){
           $presupuesto = new Presupuesto;
           $presupuesto->fecha = date('Y-m-d H:i:s');
@@ -95,6 +168,18 @@ public function __construct(){/**/}
               $producto_presupuesto->c_producto = $producto->codigo;
               $producto_presupuesto->c_presupuesto = $presupuesto->codigo;
               $producto_presupuesto->save();
+
+              //descontar de tiendas
+              $this->descontar_tienda($request->get('fk_tienda_compra'),$producto->codigo,$request->get('cantidad'.$i));
+
+              //reponer inventario
+              $inventario = $this->obtener_inventario($request->get('fk_tienda_compra'),$producto->codigo);
+              $pendiente = $this->existe_reposicion_pendiente($request->get('fk_tienda_compra'),$producto->codigo);
+
+               if (($inventario <= 20)){
+                 $this->reponer_inventario($request->get('fk_tienda_compra'),$producto->codigo);
+               }
+
               $acumulado = $acumulado + ($producto->precio*$producto_presupuesto->cantidad);
             }
             else break;
@@ -105,6 +190,9 @@ public function __construct(){/**/}
           $pedido->fecha = date('Y-m-d H:i:s');
           $pedido->c_presupuesto = $presupuesto->codigo;
           $pedido->save();
+
+          $punto_cliente->fk_pedido = $pedido->codigo;
+          $punto_cliente->save();
 
           $presupuesto->total= $acumulado;
           $presupuesto->save();
@@ -137,6 +225,17 @@ public function __construct(){/**/}
               $producto_presupuesto->c_producto = $producto->codigo;
               $producto_presupuesto->c_presupuesto = $presupuesto->codigo;
               $producto_presupuesto->save();
+
+              //descontar de tiendas
+              $this->descontar_tienda($presupuesto->fk_tienda_compra,$producto->codigo,$request->get('cantidad'.$i));
+              $pendiente = $this->existe_reposicion_pendiente($presupuesto->fk_tienda,$producto->codigo);
+
+              //reponer inventario
+              $inventario = $this->obtener_inventario($presupuesto->fk_tienda_compra,$producto->codigo);
+               if (($inventario <= 20)){
+                 $this->reponer_inventario($presupuesto->fk_tienda_compra,$producto->codigo);
+               }
+
               $acumulado = $acumulado + ($producto->precio*$producto_presupuesto->cantidad);
             }
             else break;

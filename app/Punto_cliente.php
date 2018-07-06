@@ -23,6 +23,7 @@ class Punto_cliente extends Model
   'valor',
   'fk_juridico',
   'fk_naturale',
+  'fk_pedido',
   'fk_punto'
   ];
 

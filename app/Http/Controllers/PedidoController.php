@@ -125,19 +125,19 @@ class PedidoController extends Controller {
              $cedula = $this->encontrar_cedula_natural($codigo);
              $rif = $this->encontrar_rif_juridico($codigo);
 
-             if ($cedula[0]->id){
+             if ($cedula){
                $Punto_cliente->fk_naturale = $cedula[0]->id;
              }
-             else if ($rif[0]->id){
+             else if ($rif){
                $Punto_cliente->fk_juridico = $rif[0]->id;
              }
 
              $Punto_cliente->adquirido = -1*($request->get('monto')/$valor_actual[0]->valor);
              $Punto_cliente->fk_punto = $valor_actual[0]->codigo;
              $Punto_cliente->valor = $valor_actual[0]->valor;
+             $Punto_cliente->fk_pedido = $codigo;
 
              $Punto_cliente->save();
-
 
              $pedido = Pedido::findOrFail($codigo);
              $presupuesto = Presupuesto::findOrFail($pedido->c_presupuesto);

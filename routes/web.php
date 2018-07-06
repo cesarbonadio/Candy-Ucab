@@ -42,12 +42,14 @@ Route::get('reporte/ranking_producto_tienda_lugar','ReportesController@ranking_p
 Route::get('reporte/top10compra','ReportesController@top_cliente_compra');
 
 
+
 /*Para el aplicativo como tal*/
 Route::resource('administrar/producto','ProductoController');
 Route::resource('administrar/tienda','TiendaController');
 
 /*para las reposiciones de la fabrica (todavia no las hace automaticamente)*/
 Route::resource('inventario/reposicion','ReposicionController');
+Route::resource('inventario/alerta','AlertaController');
 
 
 Route::get('cliente/pedido/{codigo}/pagar_punto','PedidoController@pagar_punto');

@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-		<h3>Pagar <?php echo e($medio[0]->num_cheque); ?></h3>
+		<h3>Pagar</h3>
 
 		<?php if(count($errors)>0): ?>
 		<div class="alert alert-danger">
@@ -22,6 +22,12 @@
     <?php echo e(Form::token()); ?>
 
 
+		<?php if($medio == null): ?>
+		<div class = "col-lg-6 col-sm-6 col-md-6 col-xs-12">
+			 <br>
+			 <h4 >No tiene medios de pago este cliente <button class="btn btn-success" type="reset"><a href="../../pedido" style="color: inherit;">volver</a></button></h4>
+		</div>
+		<?php else: ?>
 
    <div class = "row">
 
@@ -68,6 +74,8 @@
       <button class="btn btn-danger" type="reset"><a href="../../pedido" style="color: inherit;">Cancelar</a></button>
       </div>
      </div>
+
+		 <?php endif; ?>
 
   <?php echo Form::close(); ?>
 
